@@ -288,88 +288,49 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
+          <h1 className="footer-main-heading">Let's build your next <br/> project together</h1>
         <div className="footer-content">
-          <div className="footer-main">
-            <div className="footer-logo">
-              <img src={logo} alt="Logo" className="footer-logo-image" />
-              <span className="gradient-text">Portfolio</span>
-            </div>
-            <p className="footer-description">
-              Crafting digital experiences with passion and precision. Let's
-              build something amazing together.
-            </p>
-            <div className="footer-social">
-              <a href="#" className="social-link">
-                <span>GitHub</span>
-              </a>
-              <a href="#" className="social-link">
-                <span>LinkedIn</span>
-              </a>
-              <a href="#" className="social-link">
-                <span>Twitter</span>
-              </a>
-              <a href="#" className="social-link">
-                <span>Email</span>
-              </a>
-              <a href="#" className="social-link">
-                <span>Whatsapp</span>
-              </a>
-            </div>
+          <div className="footer-column">
+            <h4 className="footer-heading">Primary</h4>
+            <div className="footer-divider"></div>
+            <ul className="footer-links">
+              <li><a href="#approach">Approach</a></li>
+              <li><a href="#clients">Clients</a></li>
+              <li><a href="#awards">Awards</a></li>
+              <li><a href="#services">Services</a></li>
+            </ul>
           </div>
-          <div className="footer-links">
-            <div className="footer-column">
-              <h4>Navigation</h4>
-              <ul>
-                <li>
-                  <a href="#hero">Home</a>
-                </li>
-                <li>
-                  <a href="#about">About</a>
-                </li>
-                <li>
-                  <a href="#tech">Tech Stack</a>
-                </li>
-                <li>
-                  <a href="#projects">Projects</a>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h4>Services</h4>
-              <ul>
-                <li>
-                  <a href="#">Web Development</a>
-                </li>
-                <li>
-                  <a href="#">UI/UX Design</a>
-                </li>
-                <li>
-                  <a href="#">Mobile Apps</a>
-                </li>
-                <li>
-                  <a href="#">Consulting</a>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h4>Contact</h4>
-              <ul>
-                <li>
-                  <a href="#">inoumanmalik@outlook.com</a>
-                </li>
-                <li>
-                  <a href="#">+92 314 4221693</a>
-                </li>
-                <li>
-                  <a href="#">G10/4, Islamabad</a>
-                </li>
-                <li>
-                  <a href="#">Available for hire</a>
-                </li>
-              </ul>
-            </div>
+          <div className="footer-column">
+            <h4 className="footer-heading">Go Deeper</h4>
+            <div className="footer-divider"></div>
+            <ul className="footer-links">
+              <li><a href="#about">About</a></li>
+            </ul>
           </div>
+          
+          <div className="footer-column">
+            <h4 className="footer-heading">SOCIAL</h4>
+            <div className="footer-divider"></div>
+            <ul className="footer-links">
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">X</a></li>
+              <li><a href="#">LinkedIn</a></li>
+              <li><a href="#">GitHub</a></li>
+            </ul>
+          </div>
+          
+          <div className="footer-column">
+            <h4 className="footer-heading">WANT TO SEE MY WORK?</h4>
+            <div className="footer-divider"></div>
+            <ul className="footer-links">
+              <li><a href="mailto:inoumanmalik@outlook.com">inoumanmalik@outlook.com</a></li>
+              <li><a href="tel:+923144221693">+92 314 4221693</a></li>
+            </ul>
+          </div>
+          
+          
         </div>
+        
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-bottom-content">
@@ -382,6 +343,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="background-signature">Nouman</div>
     </footer>
   );
 };
@@ -422,6 +384,7 @@ function App() {
       <GitHubContributions />
       <Contact />
       <Footer />
+      
     </div>
   );
 }
