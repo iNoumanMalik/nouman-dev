@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { motion } from "framer-motion";
@@ -285,6 +285,13 @@ const Contact = () => {
 
 // Footer Section
 const Footer = () => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <footer className="footer">
       <div className="container">
@@ -334,12 +341,14 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-bottom-content">
-            <p>&copy; 2025 Portfolio. All rights reserved.</p>
-            <div className="footer-bottom-links">
+            <p>&copy; 2025 Nouman. <br/> All rights reserved.</p>
+            <p>Islamabad<br/>{time.toLocaleTimeString()}</p>
+            <p>I write code, break it, then fix it (sometimes).<br/>//////////////////////// </p>
+            {/* <div className="footer-bottom-links">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>
               <a href="#">Cookies</a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
