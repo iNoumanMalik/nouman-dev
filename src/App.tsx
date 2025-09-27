@@ -311,6 +311,9 @@ const Footer = () => {
               <a href="#" className="social-link">
                 <span>Email</span>
               </a>
+              <a href="#" className="social-link">
+                <span>Whatsapp</span>
+              </a>
             </div>
           </div>
           <div className="footer-links">
@@ -352,13 +355,13 @@ const Footer = () => {
               <h4>Contact</h4>
               <ul>
                 <li>
-                  <a href="#">hello@portfolio.dev</a>
+                  <a href="#">inoumanmalik@outlook.com</a>
                 </li>
                 <li>
-                  <a href="#">+1 (555) 123-4567</a>
+                  <a href="#">+92 314 4221693</a>
                 </li>
                 <li>
-                  <a href="#">San Francisco, CA</a>
+                  <a href="#">G10/4, Islamabad</a>
                 </li>
                 <li>
                   <a href="#">Available for hire</a>
@@ -370,7 +373,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-divider"></div>
           <div className="footer-bottom-content">
-            <p>&copy; 2024 Portfolio. All rights reserved.</p>
+            <p>&copy; 2025 Portfolio. All rights reserved.</p>
             <div className="footer-bottom-links">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>
