@@ -75,6 +75,7 @@ body {
 }
 
 .nav-button{
+  color: black;
   border-radius: 20px;
   padding-block: 6px;
   font-size: small;

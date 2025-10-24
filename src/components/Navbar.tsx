@@ -1,4 +1,4 @@
-import logo from "../assets/layers-ic.png"; // Adjust path as needed
+import logo from "../assets/layers-ic.png"; 
 
 const handleLogoClick = () => {
   window.location.href = "/";
