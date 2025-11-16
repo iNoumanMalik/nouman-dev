@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./pages/Hero";
 import About from "./pages/About";
 import TechStack from "./components/TechStack";
+import SkillsCloud from "./components/SkillsCloud";
 import Projects from "./components/Projects";
 import Companies from "./components/Companies";
 import GitHubContributions from "./components/GitHubContributions";
@@ -49,6 +50,7 @@ function App() {
       <Hero />
       <About />
       <TechStack />
+      <SkillsCloud/>
       <Projects />
       <Companies />
       <GitHubContributions />

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "devicon/devicon.min.css";
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
