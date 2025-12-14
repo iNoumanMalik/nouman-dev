@@ -78,7 +78,7 @@ const CategoryPill = ({ category, selected, onClick }: {
               initial={{ opacity: 0, width: 0, marginLeft: -4 }}
               animate={{ opacity: 1, width: 'auto', marginLeft: 4 }}
               exit={{ opacity: 0, width: 0, marginLeft: -4 }}
-              className="whitespace-nowrap capitalize text-sm font-medium"
+              className="whitespace-nowrap capitalize text-sm font-medium hidden md:block"
             >
               {label}
             </motion.span>
@@ -140,11 +140,11 @@ const TechStackShowcase = () => {
         </motion.div>
 
         {/* Enhanced Category Filter Pills */}
-        <div className="relative mb-8">
+        <div className="relative mb-16 md:mb-8">
           {/* Background decorative elements */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           
-          <div className="flex flex-wrap justify-center gap-2 relative">
+          <div className="grid grid-cols-4 items-center md:flex md:flex-wrap justify-center md:gap-2 relative">
             {categories.map((cat) => (
               <motion.div
                 key={cat}
@@ -152,7 +152,7 @@ const TechStackShowcase = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 onMouseEnter={() => setHoveredCategory(cat)}
                 onMouseLeave={() => setHoveredCategory(null)}
-                className="relative"
+                className="flex justify-center md:relative"
               >
                 <CategoryPill
                   category={cat}
@@ -209,7 +209,7 @@ const TechStackShowcase = () => {
         </div>
 
         {/* Tech Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+        <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-4">
           {filteredTechnologies.map((tech: Tech) => (
             <div
               key={tech.name}
@@ -219,18 +219,18 @@ const TechStackShowcase = () => {
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-16 h-16 mx-auto flex items-center justify-center
+                className="w-14 h-14 md:w-16 md:h-16 mx-auto flex items-center justify-center
                 rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]
                 shadow-lg cursor-pointer border border-white/20 relative overflow-hidden"
               >
                 {tech.imgSrc ? (
-                  <img src={tech.imgSrc} alt={tech.name} className="w-9 h-9" />
+                  <img src={tech.imgSrc} alt={tech.name} className="w-7 h-7 md:w-9 md:h-9" />
                 ) : (
                   <tech.icon className="w-8 h-8 text-gray-900" />
                 )}
               </motion.div>
 
-              <p className="text-center text-white/90 text-sm mt-2 font-medium">
+              <p className="text-center text-white/90 text-xs md:text-sm mt-2 font-medium">
                 {tech.name}
               </p>
 
