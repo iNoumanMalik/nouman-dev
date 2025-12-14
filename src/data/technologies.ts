@@ -28,9 +28,25 @@ import {
   SiDocker, // Added Docker icon
   // SiJava, // Added Java icon
 } from "react-icons/si";
-import { FaDatabase, FaTools, FaCalendar } from "react-icons/fa"; 
+import { FaTools } from "react-icons/fa"; 
+import { ComponentType } from "react";
+import materialUi from "../assets/Icons/icons8-material-ui.svg";
+import dbeaver from "../assets/Icons/dbeaver-plain.svg";
+import trae from "../assets/Icons/trae-color.svg";
+import windsurf from "../assets/Icons/windsurf-color.svg";
+import xampp from "../assets/Icons/xaamp.svg";
+import zustand from "../assets/Icons/zustand-original.svg";
+import elevenlabs from "../assets/Icons/elevenlabs-color.svg";
 
-export const technologies = {
+
+export interface Tech {
+  name: string;
+  description?: string;
+  icon: ComponentType<{ className?: string }>;
+  imgSrc?: string;
+}
+
+export const technologies: Record<string, Tech[]> = {
   frontend: [
     {
       name: "React",
@@ -64,12 +80,14 @@ export const technologies = {
     },
     {
       name: "Material UI",
-      icon: SiReact, // Placeholder
+      icon: SiReact,
+      imgSrc: materialUi,
       description: "React component library",
     },
     {
       name: "Zustand",
-      icon: SiReact, // Placeholder
+      icon: SiReact,
+      imgSrc: zustand,
       description: "State management for React",
     },
     {
@@ -157,12 +175,14 @@ export const technologies = {
     },
     {
       name: "XAMPP",
-      icon: FaTools, // Note: XAMPP icon not available
+      icon: FaTools,
+      imgSrc: xampp,
       description: "Local web server solution",
     },
     {
       name: "DBeaver",
-      icon: SiReact, // Note: DBeaver icon not available
+      icon: SiReact,
+      imgSrc: dbeaver,
       description: "Universal database tool",
     },
     {
@@ -172,12 +192,14 @@ export const technologies = {
     },
     {
       name: "Trae",
-      icon: FaTools, // Note: Trae icon not available
+      icon: FaTools,
+      imgSrc: trae,
       description: "HTTP client library",
     },
     {
       name: "Windsurf",
-      icon: FaTools, // Note: Windsurf icon not available
+      icon: FaTools,
+      imgSrc: windsurf,
       description: "AI code editor",
     },
   ],
@@ -231,7 +253,8 @@ export const technologies = {
     },
     {
       name: "ElevenLabs",
-      icon: FaTools, // Note: ElevenLabs icon not available
+      icon: FaTools,
+      imgSrc: elevenlabs,
       description: "AI voice generation platform",
     },
     // {
