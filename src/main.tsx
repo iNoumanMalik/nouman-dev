@@ -7,19 +7,19 @@ import App from './App';
  
 
 // Initialize GSAP ScrollTrigger
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-// Enable smooth scrolling for the whole document
-document.documentElement.style.scrollBehavior = 'smooth';
+// // Enable smooth scrolling for the whole document
+// document.documentElement.style.scrollBehavior = 'smooth';
 
-// Set up a root-level container with proper styling
-const rootElement = document.getElementById('root');
-if (rootElement) {
-  rootElement.className = 'min-h-screen bg-black text-white';
-}
+// // Set up a root-level container with proper styling
+// const rootElement = document.getElementById('root');
+// if (rootElement) {
+//   rootElement.className = 'min-h-screen bg-black text-white';
+// }
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

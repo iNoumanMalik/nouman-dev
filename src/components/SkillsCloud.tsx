@@ -58,9 +58,9 @@ const TechStackShowcase = () => {
 
         {/* Tech Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6">
-          {filteredTechnologies.map((tech: Tech, index: number) => (
+          {filteredTechnologies.map((tech: Tech) => (
             <div
-              key={index}
+              key={tech.name}
               className="group relative"
               onMouseEnter={() => setActiveTooltip(tech.name)}
               onMouseLeave={() => setActiveTooltip(null)}
@@ -71,7 +71,11 @@ const TechStackShowcase = () => {
                 rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]
                 shadow-lg cursor-pointer border border-white/20 relative overflow-hidden"
               >
-                <tech.icon className="w-9 h-9 text-gray-900" />
+                {tech.imgSrc ? (
+                  <img src={tech.imgSrc} alt={tech.name} className="w-9 h-9" />
+                ) : (
+                  <tech.icon className="w-9 h-9 text-gray-900" />
+                )}
               </motion.div>
 
               <p className="text-center text-white/90 text-sm mt-2 font-medium">
@@ -94,7 +98,11 @@ const TechStackShowcase = () => {
                         className="w-10 h-10 flex items-center justify-center
                         rounded-xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]"
                       >
-                        <tech.icon className="w-6 h-6 text-gray-900" />
+                        {tech.imgSrc ? (
+                          <img src={tech.imgSrc} alt={tech.name} className="w-6 h-6" />
+                        ) : (
+                          <tech.icon className="w-6 h-6 text-gray-900" />
+                        )}
                       </div>
                       <div>
                         <h3 className="font-bold text-white text-lg">
@@ -103,7 +111,7 @@ const TechStackShowcase = () => {
                         <span className="text-cyan-400 text-xs font-medium capitalize">
                           {
                             (Object.entries(technologies) as [string, Tech[]][])
-                              .find(([cat, techs]) => techs.some((t: Tech) => t.name === tech.name))?.[0]
+                              .find(([ , techs]) => techs.some((t: Tech) => t.name === tech.name))?.[0]
                           }
                         </span>
                       </div>

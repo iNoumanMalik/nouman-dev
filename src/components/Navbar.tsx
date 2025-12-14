@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="nav-container">
         <div onClick={handleLogoClick} className="nav-logo">
           <img src={logo} alt="Logo" className="logo-image" />
-          <span className=".logo">portfolio</span>
+          <span className="logo">portfolio</span>
         </div>
         <div className="nav-links">
           <a href="#hero" className="nav-link">
