@@ -1,17 +1,39 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { technologies, Tech } from "../data/technologies";
 
 const TechStackShowcase = () => {
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  const allTechnologies: Tech[] = Object.values(technologies).flat();
+
+  const uniqueAllTechnologies = useMemo(() => {
+    const seen = new Set<string>();
+    const result: Tech[] = [];
+    
+    Object.values(technologies).flat().forEach((tech: Tech) => {
+      if (!seen.has(tech.name)) {
+        seen.add(tech.name);
+        result.push(tech);
+      }
+    });
+    
+    return result;
+  }, []);
 
   const filteredTechnologies: Tech[] =
     selectedCategory === "all"
-      ? allTechnologies
+      ? uniqueAllTechnologies
       : technologies[selectedCategory as keyof typeof technologies] || [];
+
+  const findTechCategory = (techName: string): string => {
+    for (const [category, techs] of Object.entries(technologies)) {
+      if (techs.some((tech: Tech) => tech.name === techName)) {
+        return category;
+      }
+    }
+    return "other";
+  };
 
   return (
     <div className="min-h-screen bg-black py-20 px-4">
@@ -34,7 +56,7 @@ const TechStackShowcase = () => {
             onClick={() => setSelectedCategory("all")}
             className={`px-6 py-3 rounded-full font-semibold transition-all ${
               selectedCategory === "all"
-                ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
+                ? "bg-linear-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
                 : "bg-white/10 text-gray-300 hover:bg-white/20"
             }`}
           >
@@ -47,7 +69,7 @@ const TechStackShowcase = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-5 py-3 rounded-full capitalize font-semibold transition-all ${
                 selectedCategory === cat
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
+                  ? "bg-linear-to-r from-cyan-500 to-blue-500 text-white shadow-lg"
                   : "bg-white/10 text-gray-300 hover:bg-white/20"
               }`}
             >
@@ -68,7 +90,7 @@ const TechStackShowcase = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="w-20 h-20 mx-auto flex items-center justify-center
-                rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]
+                rounded-2xl bg-linear-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]
                 shadow-lg cursor-pointer border border-white/20 relative overflow-hidden"
               >
                 {tech.imgSrc ? (
@@ -96,7 +118,7 @@ const TechStackShowcase = () => {
                     <div className="flex items-center gap-3 mb-3">
                       <div
                         className="w-10 h-10 flex items-center justify-center
-                        rounded-xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]"
+                        rounded-xl bg-linear-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]"
                       >
                         {tech.imgSrc ? (
                           <img src={tech.imgSrc} alt={tech.name} className="w-6 h-6" />
@@ -109,10 +131,7 @@ const TechStackShowcase = () => {
                           {tech.name}
                         </h3>
                         <span className="text-cyan-400 text-xs font-medium capitalize">
-                          {
-                            (Object.entries(technologies) as [string, Tech[]][])
-                              .find(([ , techs]) => techs.some((t: Tech) => t.name === tech.name))?.[0]
-                          }
+                          {findTechCategory(tech.name)}
                         </span>
                       </div>
                     </div>
