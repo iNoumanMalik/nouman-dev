@@ -33,10 +33,11 @@ import { ComponentType } from "react";
 import materialUi from "../assets/Icons/icons8-material-ui.svg";
 import dbeaver from "../assets/Icons/dbeaver-plain.svg";
 import trae from "../assets/Icons/trae-color.svg";
-import windsurf from "../assets/Icons/windsurf-color.svg";
+import windsurf from "../assets/Icons/windsurf.svg";
 import xampp from "../assets/Icons/xaamp.svg";
-import zustand from "../assets/Icons/zustand-original.svg";
-import elevenlabs from "../assets/Icons/elevenlabs-color.svg";
+import zustand from "../assets/Icons/zustand.svg";
+import elevenlabs from "../assets/Icons/elevenlabs.svg";
+import java from "../assets/Icons/java.svg";
 
 
 export interface Tech {
@@ -221,7 +222,8 @@ export const technologies: Record<string, Tech[]> = {
     },
     {
       name: "Java",
-      icon: SiReact,
+      icon: FaTools,
+      imgSrc: java,
       description: "Object-oriented programming",
     },
     {
