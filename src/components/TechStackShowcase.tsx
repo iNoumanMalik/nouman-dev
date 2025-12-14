@@ -20,7 +20,6 @@ import {
 
 } from 'lucide-react';
 
-// Improved Category Icons with better representation
 const CategoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   all: (props) => <Grid className="w-5 h-5" {...props} />, 
   frontend: (props) => <Monitor className="w-5 h-5" {...props} />, 
@@ -90,8 +89,6 @@ const CategoryPill = ({ category, selected, onClick }: {
   );
 };
 
-// --- END: New Category Button Component ---
-
 const TechStackShowcase = () => {
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -143,7 +140,7 @@ const TechStackShowcase = () => {
         </motion.div>
 
         {/* Enhanced Category Filter Pills */}
-        <div className="relative mb-12">
+        <div className="relative mb-8">
           {/* Background decorative elements */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           
@@ -212,7 +209,7 @@ const TechStackShowcase = () => {
         </div>
 
         {/* Tech Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
           {filteredTechnologies.map((tech: Tech) => (
             <div
               key={tech.name}
@@ -222,14 +219,14 @@ const TechStackShowcase = () => {
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-20 h-20 mx-auto flex items-center justify-center
+                className="w-16 h-16 mx-auto flex items-center justify-center
                 rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]
                 shadow-lg cursor-pointer border border-white/20 relative overflow-hidden"
               >
                 {tech.imgSrc ? (
                   <img src={tech.imgSrc} alt={tech.name} className="w-9 h-9" />
                 ) : (
-                  <tech.icon className="w-9 h-9 text-gray-900" />
+                  <tech.icon className="w-8 h-8 text-gray-900" />
                 )}
               </motion.div>
 
