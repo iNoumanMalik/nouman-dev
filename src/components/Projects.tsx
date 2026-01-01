@@ -143,12 +143,56 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               ))}
             </motion.div>
 
-            <motion.button
-              className="mt-10 w-fit px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-opacity-90 transition-all active:scale-95"
-              whileHover={{ scale: 1.05 }}
+            <motion.div
+              className="mt-10 flex flex-wrap gap-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
             >
-              Demo
-            </motion.button>
+              {/* Demo Button - Solid */}
+              <motion.button
+                className="group relative px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-opacity-90 transition-all active:scale-95 overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="relative flex items-center gap-2">
+                  <span>Live Demo</span>
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              </motion.button>
+
+              {/* Repository Button - Outline with Glow */}
+              <motion.button
+                className="group relative px-8 py-3.5 bg-transparent font-bold rounded-full transition-all active:scale-95 overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  border: '1.5px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                
+                {/* Animated border gradient */}
+                <div className="absolute inset-0 rounded-full p-[1.5px]">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                
+                <span className="relative flex items-center gap-2 text-white">
+                  <svg className="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                  <span>Code</span>
+                  <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </motion.button>
+            </motion.div>
           </div>
 
           {/* Right Side: Clean Modern Image Display */}
@@ -165,10 +209,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
               {/* Main Image Container */}
               <div className="relative h-full rounded-3xl p-12 overflow-hidden">
-                {/* Corner Accent */}
-                {/* <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 blur-2xl" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 blur-2xl" /> */}
-
                 {/* Logo/Image */}
                 <div className="relative h-full flex items-center justify-center">
                   <img
