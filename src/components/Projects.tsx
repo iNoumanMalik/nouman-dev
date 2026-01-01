@@ -11,7 +11,7 @@ import zcLogo from "../assets/clients/zc-traders/logo.png";
 const projects = [
   {
     id: 1,
-    title: "OPTOPRO",
+    title: "OptoPro",
     description:
       "A full-scale hospital management system for an eye care clinic, handling appointments, patients, dispensing, billing, and operational workflows.",
     tech: ["React", "TypeScript", "Material UI", "Zustand", "NestJS", "MySQL"],
@@ -66,7 +66,7 @@ const projects = [
   },
   {
     id: 6,
-    title: "TherapistStreet",
+    title: "Therapistreet",
     description:
       "A therapist listing and lead capture platform built with Next.js, featuring a custom contact form integrated with Google Scripts for data handling.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Google Scripts"],
