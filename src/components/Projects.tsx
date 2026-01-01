@@ -1,10 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import optoLogo from '../assets/clients/opto/logo.png';
-import abtahiLogo from '../assets/clients/abtahi/logo.png';
-import zerolineLogo from '../assets/clients/zeroline/logo.png';
-import therapistreetLogo from '../assets/clients/therapistreet/logo.png';
-import fitlabLogo from '../assets/clients/fitlab/logo.png';
+import React from "react";
+import { motion } from "framer-motion";
+import optoLogo from "../assets/clients/opto/logo.png";
+import abtahiLogo from "../assets/clients/abtahi/logo.png";
+import zerolineLogo from "../assets/clients/zeroline/logo.png";
+import therapistreetLogo from "../assets/clients/therapistreet/logo.png";
+import fitlabLogo from "../assets/clients/fitlab/logo.png";
+import zamungLogo from "../assets/clients/zamung/logo.png";
+import zcLogo from "../assets/clients/zc-traders/logo.png";
 
 const projects = [
   {
@@ -12,7 +14,7 @@ const projects = [
     title: "OPTOPRO",
     description:
       "A full-scale hospital management system for an eye care clinic, handling appointments, patients, dispensing, billing, and operational workflows.",
-    tech: ["React", "TypeScript", "Material UI", "Zustand", "NestJS", "Node.js"],
+    tech: ["React", "TypeScript", "Material UI", "Zustand", "NestJS", "MySQL"],
     color: "from-blue-700 to-cyan-900",
     image: optoLogo,
   },
@@ -27,12 +29,12 @@ const projects = [
   },
   {
     id: 3,
-    title: "FitGrow",
+    title: "FitLab",
     description:
       "An AI-powered gym lead generation landing page focused on conversions, performance, and modern UI/UX.",
     tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     color: "from-blue-500 to-cyan-900",
-    image: fitlabLogo
+    image: fitlabLogo,
   },
   {
     id: 4,
@@ -43,23 +45,50 @@ const projects = [
     color: "from-blue-400 to-cyan-800",
     image: abtahiLogo,
   },
+  {
+    id: 5,
+    title: "ZC Traders",
+    description:
+      "A business website for a trading company, focused on showcasing services, products, and building client trust with a clean UI.",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    color: "from-blue-400 to-cyan-800",
+    image: zcLogo,
+  },
+  {
+    id: 6,
+    title: "TherapistStreet",
+    description:
+      "A therapist listing and lead capture platform built with Next.js, featuring a custom contact form integrated with Google Scripts for data handling.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Google Scripts"],
+    color: "from-blue-400 to-cyan-800",
+    image: therapistreetLogo,
+  },
+  {
+    id: 7,
+    title: "Zamung Client",
+    description:
+      "A client-facing web platform designed to present company offerings with a modern layout and responsive user experience.",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    color: "from-blue-300 to-cyan-800",
+    image: zamungLogo,
+  },
 ];
 
 interface ProjectCardProps {
-  project: typeof projects[0];
+  project: (typeof projects)[0];
   index: number;
   total: number;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
-  const topOffset = 80 + index * 40; 
+  const topOffset = 80 + index * 40;
 
   return (
-    <div 
+    <div
       className="sticky w-full max-w-6xl mx-auto flex items-start justify-center px-4"
-      style={{ top: `${topOffset}px`, height: '80vh' }}
+      style={{ top: `${topOffset}px`, height: "80vh" }}
     >
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -67,11 +96,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       >
         {/* Decorative Background Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 blur-[100px] -mr-48 -mt-48 rounded-full" />
-        
+
         <div className="flex flex-col lg:flex-row h-full">
           {/* Left Side: Content */}
           <div className="w-full lg:w-1/2 p-8 md:p-12 flex flex-col justify-center z-10">
-            <motion.span 
+            <motion.span
               className="text-white/60 font-mono text-sm mb-4 block"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -79,8 +108,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             >
               PROJECT 0{project.id}
             </motion.span>
-            
-            <motion.h3 
+
+            <motion.h3
               className="text-4xl md:text-6xl font-bold text-white mb-6"
               initial={{ x: -20, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -88,8 +117,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             >
               {project.title}
             </motion.h3>
-            
-            <motion.p 
+
+            <motion.p
               className="text-white/80 text-lg mb-8 max-w-md leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -97,25 +126,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             >
               {project.description}
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="flex flex-wrap gap-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
               {project.tech.map((t) => (
-                <span key={t} className="px-3 py-1 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-xs font-medium text-white/90">
+                <span
+                  key={t}
+                  className="px-3 py-1 bg-black/20 backdrop-blur-md border border-white/10 rounded-full text-xs font-medium text-white/90"
+                >
                   {t}
                 </span>
               ))}
             </motion.div>
 
-            <motion.button 
+            <motion.button
               className="mt-10 w-fit px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-opacity-90 transition-all active:scale-95"
               whileHover={{ scale: 1.05 }}
             >
-              View Project
+              Demo
             </motion.button>
           </div>
 
@@ -130,21 +162,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             >
               {/* Glow Effect Behind */}
               <div className="absolute inset-0  scale-110 rounded-full" />
-              
+
               {/* Main Image Container */}
               <div className="relative h-full rounded-3xl p-12 overflow-hidden">
                 {/* Corner Accent */}
                 {/* <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 blur-2xl" />
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 blur-2xl" /> */}
-                
+
                 {/* Logo/Image */}
                 <div className="relative h-full flex items-center justify-center">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-contain transition-transform duration-500"
-                    style={{ 
-                      filter: 'brightness(1.1) drop-shadow(0 10px 30px rgba(0,0,0,0.5))'
+                    style={{
+                      filter:
+                        "brightness(1.1) drop-shadow(0 10px 30px rgba(0,0,0,0.5))",
                     }}
                   />
                 </div>
@@ -153,28 +186,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               {/* Orbiting Dots */}
               <motion.div
                 className="absolute top-0 right-0 w-3 h-3 bg-white rounded-full"
-                animate={{ 
+                animate={{
                   rotate: 360,
                 }}
-                transition={{ 
+                transition={{
                   duration: 10,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
                 }}
-                style={{ transformOrigin: '-150px 150px' }}
+                style={{ transformOrigin: "-150px 150px" }}
               />
-              
+
               <motion.div
                 className="absolute bottom-0 left-0 w-2 h-2 bg-white/60 rounded-full"
-                animate={{ 
+                animate={{
                   rotate: -360,
                 }}
-                transition={{ 
+                transition={{
                   duration: 15,
                   repeat: Infinity,
-                  ease: "linear"
+                  ease: "linear",
                 }}
-                style={{ transformOrigin: '150px -150px' }}
+                style={{ transformOrigin: "150px -150px" }}
               />
             </motion.div>
           </div>
@@ -188,19 +221,21 @@ function Projects() {
   return (
     <section className="relative w-full bg-black py-24">
       <div className="w-full max-w-4xl mx-auto px-6 mb-20 text-center">
-        <h2 className="text-white text-5xl md:text-7xl font-black mb-6 tracking-tighter">
-          SELECTED <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">WORKS</span>
+        <h2 className="text-white text-5xl md:text-7xl font-black mb-2 tracking-tighter">
+          Live Projects
+          <br />
+          {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">WORKS</span> */}
         </h2>
         <p className="text-white/40 font-mono">SCROLL TO EXPLORE ARCHIVE</p>
       </div>
 
       <div className="relative space-y-24 pb-48">
         {projects.map((project, index) => (
-          <ProjectCard 
-            key={project.id} 
-            project={project} 
-            index={index} 
-            total={projects.length} 
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={index}
+            total={projects.length}
           />
         ))}
       </div>
