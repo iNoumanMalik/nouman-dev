@@ -17,6 +17,8 @@ const projects = [
     tech: ["React", "TypeScript", "Material UI", "Zustand", "NestJS", "MySQL"],
     color: "from-blue-700 to-cyan-900",
     image: optoLogo,
+    demoLink: "https://opto.computerized.ai/", 
+    codeLink: "https://github.com/computerized-ai/optopro-frontend", 
   },
   {
     id: 2,
@@ -26,6 +28,8 @@ const projects = [
     tech: ["React", "TypeScript", "Tailwind CSS", "APIs", "AI Integration"],
     color: "from-blue-600 to-cyan-800",
     image: zerolineLogo,
+    demoLink: "https://zero.computerized.ai/", 
+    codeLink: "https://github.com/computerized-ai/computerized", 
   },
   {
     id: 3,
@@ -35,6 +39,8 @@ const projects = [
     tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     color: "from-blue-500 to-cyan-900",
     image: fitlabLogo,
+    demoLink: "https://fitlab.computerized.ai/", 
+    codeLink: "https://github.com/computerized-ai/ai-fitness-website", 
   },
   {
     id: 4,
@@ -44,6 +50,8 @@ const projects = [
     tech: ["React", "TypeScript", "Tailwind CSS", "Calendly", "Zoom API"],
     color: "from-blue-400 to-cyan-800",
     image: abtahiLogo,
+    demoLink: "https://www.abtahicounselling.co.uk/", 
+    codeLink: "https://github.com/computerized-ai/abtahi-counselling", 
   },
   {
     id: 5,
@@ -53,6 +61,8 @@ const projects = [
     tech: ["React", "TypeScript", "Tailwind CSS"],
     color: "from-blue-400 to-cyan-800",
     image: zcLogo,
+    demoLink: "https://zc-traders.vercel.app/", 
+    codeLink: "https://github.com/iNoumanMalik/zc-traders", 
   },
   {
     id: 6,
@@ -62,6 +72,8 @@ const projects = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Google Scripts"],
     color: "from-blue-400 to-cyan-800",
     image: therapistreetLogo,
+    demoLink: "https://www.therapistreet.com/", 
+    codeLink: "https://github.com/computerized-ai/therapistreet", 
   },
   {
     id: 7,
@@ -71,6 +83,8 @@ const projects = [
     tech: ["React", "TypeScript", "Tailwind CSS"],
     color: "from-blue-300 to-cyan-800",
     image: zamungLogo,
+    demoLink: "https://www.zamungclient.com/", 
+    codeLink: "https://github.com/iNoumanMalik/landmark-builders", 
   },
 ];
 
@@ -82,6 +96,18 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const topOffset = 80 + index * 40;
+
+  const handleDemoClick = () => {
+    if (project.demoLink) {
+      window.open(project.demoLink, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleCodeClick = () => {
+    if (project.codeLink) {
+      window.open(project.codeLink, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <div
@@ -151,9 +177,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             >
               {/* Demo Button - Solid */}
               <motion.button
-                className="group relative px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-opacity-90 transition-all active:scale-95 overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                onClick={handleDemoClick}
+                className="group relative px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-opacity-90 transition-all active:scale-95 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                whileHover={{ scale: project.demoLink ? 1.05 : 1 }}
+                whileTap={{ scale: project.demoLink ? 0.95 : 1 }}
+                disabled={!project.demoLink}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <span className="relative flex items-center gap-2">
@@ -166,9 +194,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
               {/* Repository Button - Outline with Glow */}
               <motion.button
-                className="group relative px-8 py-3.5 bg-transparent font-bold rounded-full transition-all active:scale-95 overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                onClick={handleCodeClick}
+                className="group relative px-8 py-3.5 bg-transparent font-bold rounded-full transition-all active:scale-95 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                whileHover={{ scale: project.codeLink ? 1.05 : 1 }}
+                whileTap={{ scale: project.codeLink ? 0.95 : 1 }}
+                disabled={!project.codeLink}
                 style={{
                   border: '1.5px solid rgba(255, 255, 255, 0.3)',
                   boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
@@ -264,7 +294,6 @@ function Projects() {
         <h2 className="text-white text-5xl md:text-7xl font-black mb-2 tracking-tighter">
           Live Projects
           <br />
-          {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">WORKS</span> */}
         </h2>
         <p className="text-white/40 font-mono">SCROLL TO EXPLORE ARCHIVE</p>
       </div>
