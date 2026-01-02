@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
+const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
+const formspreeUrl = `https://formspree.io/f/${formspreeId}`;
 export default function ContactSection() {
   const [formState, setFormState] = useState({
     name: "",
@@ -42,19 +44,44 @@ export default function ContactSection() {
     }
   }, [libsLoaded]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (window.gsap) {
-      window.gsap.to(".contact-window", {
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.5,
-        onComplete: () => setIsSent(true),
+  
+    try {
+      const response = await fetch(formspreeUrl, {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message
+        })
       });
-    } else {
-      setIsSent(true);
+  
+      if (response.ok) {
+        if (window.gsap) {
+          window.gsap.to(".contact-window", {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.5,
+            onComplete: () => setIsSent(true),
+          });
+        } else {
+          setIsSent(true);
+        }
+        setFormState({ name: "", email: "", message: "" });
+      } else {
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      alert("Network error. Please try again later.");
+      console.error(err);
     }
   };
+  
 
   return (
     <section
