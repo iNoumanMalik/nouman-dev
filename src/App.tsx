@@ -10,7 +10,7 @@ import About from "./pages/About";
 import TechStack from "./components/TechStack";
 import SkillsCloud from "./components/TechStackShowcase";
 import Projects from "./components/Projects";
-import Companies from "./components/Companies";
+import Experience from "./components/Experience";
 import GitHubContributions from "./components/GitHubContributions";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -52,7 +52,7 @@ function App() {
       <TechStack />
       <SkillsCloud/>
       <Projects />
-      <Companies />
+      <Experience />
       <GitHubContributions />
       <Contact />
       <Footer />
