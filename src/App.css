@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
 @import "tailwindcss";
 
 /* * {
@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background: #000000;
   color: #ffffff;
   overflow-x: hidden;
@@ -34,13 +34,12 @@ body {
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, #E0E0E0 0%, #A0A0A0 100%);
+  background: linear-gradient(135deg, #e0e0e0 0%, #a0a0a0 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-weight: 600;
 }
-
 
 /* Navbar */
 .navbar {
@@ -69,28 +68,28 @@ body {
   align-items: center;
   gap: 10px;
   font-size: 1.2rem;
-  color:white;
+  color: white;
   margin-left: 8px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.nav-button{
+.nav-button {
   border-radius: 20px;
   border: 1px solid transparent;
   padding: 0.45em 1.2em;
   font-size: small;
   font-weight: bold;
   color: black;
-  background-color:white;
+  background-color: white;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-left: 10px;
 }
 
-.nav-button:hover{
+.nav-button:hover {
   scale: 1.05;
   transition: 0.3s;
-  background-color:#E0E0E0;
+  background-color: #e0e0e0;
   border-color: white;
 }
 
@@ -107,7 +106,7 @@ body {
 }
 
 .nav-link {
-  color: #B0B0B0;
+  color: #b0b0b0;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
@@ -123,7 +122,6 @@ body {
   color: #ffffff;
   text-shadow: 0 0 10px #00ffff;
 }
-
 
 .nav-link:hover::after {
   width: 80%;
@@ -165,7 +163,7 @@ body {
 
 .hero-subtitle {
   font-size: 1.3rem;
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-bottom: 40px;
   font-weight: 400;
 }
@@ -190,21 +188,23 @@ body {
 .neon-button:hover {
   background: #00ffff;
   color: #000000;
-  box-shadow: 
-    0 0 20px #00ffff,
-    0 0 40px #00ffff,
-    0 0 60px #00ffff;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
   transform: translateY(-2px);
 }
 
 .neon-button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s;
 }
 
@@ -238,7 +238,11 @@ body {
 
 /* Neon Cards */
 .neon-card {
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.9) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 20, 0.9) 0%,
+    rgba(10, 10, 10, 0.9) 100%
+  );
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 30px;
@@ -250,7 +254,7 @@ body {
 }
 
 .neon-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -258,7 +262,12 @@ body {
   bottom: 0;
   border-radius: 20px;
   padding: 2px;
-  background: linear-gradient(135deg, var(--neon-color, #00ffff), transparent, var(--neon-color, #00ffff));
+  background: linear-gradient(
+    135deg,
+    var(--neon-color, #00ffff),
+    transparent,
+    var(--neon-color, #00ffff)
+  );
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   opacity: 0;
@@ -271,8 +280,7 @@ body {
 
 .neon-card:hover {
   transform: translateY(-10px);
-  box-shadow: 
-    0 20px 40px rgba(0, 255, 255, 0.1),
+  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1),
     0 0 20px rgba(var(--neon-color, 0, 255, 255), 0.3);
 }
 
@@ -316,7 +324,7 @@ body {
 }
 
 .project-card p {
-  color: #B0B0B0;
+  color: #b0b0b0;
   margin-bottom: 25px;
   line-height: 1.6;
 }
@@ -354,7 +362,7 @@ body {
 .company-card h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #E0E0E0;
+  color: #e0e0e0;
 }
 
 /* GitHub Contributions */
@@ -391,7 +399,7 @@ body {
 }
 
 .contributions-text {
-  color: #B0B0B0;
+  color: #b0b0b0;
   font-size: 1.1rem;
   margin-top: 20px;
 }
@@ -412,11 +420,11 @@ body {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #E0E0E0;
+  color: #e0e0e0;
 }
 
 .contact-card p {
-  color: #B0B0B0;
+  color: #b0b0b0;
   font-size: 1.2rem;
   margin-bottom: 40px;
 }
@@ -440,9 +448,7 @@ body {
 
 .contact-buttons .neon-button:nth-child(1):hover {
   background: #ff0080;
-  box-shadow: 
-    0 0 20px #ff0080,
-    0 0 40px #ff0080;
+  box-shadow: 0 0 20px #ff0080, 0 0 40px #ff0080;
 }
 
 .contact-buttons .neon-button:nth-child(2) {
@@ -452,9 +458,7 @@ body {
 
 .contact-buttons .neon-button:nth-child(2):hover {
   background: #00ff00;
-  box-shadow: 
-    0 0 20px #00ff00,
-    0 0 40px #00ff00;
+  box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
 }
 
 .contact-buttons .neon-button:nth-child(3) {
@@ -464,9 +468,7 @@ body {
 
 .contact-buttons .neon-button:nth-child(3):hover {
   background: #ffff00;
-  box-shadow: 
-    0 0 20px #ffff00,
-    0 0 40px #ffff00;
+  box-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00;
 }
 
 /* Responsive Design */
@@ -475,65 +477,65 @@ body {
     padding: 10px 20px;
     top: 10px;
   }
-  
+
   .nav-container {
     gap: 20px;
   }
-  
+
   .nav-links {
     gap: 15px;
   }
-  
+
   .nav-link {
     font-size: 0.8rem;
   }
-  
+
   .hero-content {
     padding: 0 15px;
   }
-  
+
   .hero-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .section {
     padding: 80px 0;
   }
-  
+
   .container {
     padding: 0 15px;
   }
-  
+
   .tech-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  
+
   .companies-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
   }
-  
+
   .contributions-grid {
     grid-template-columns: repeat(26, 1fr);
     gap: 2px;
   }
-  
+
   .contribution-day {
     width: 10px;
     height: 10px;
   }
-  
+
   .contact-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .contact-buttons .neon-button {
     width: 200px;
   }
@@ -544,31 +546,31 @@ body {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .nav-links {
     gap: 10px;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .neon-card {
     padding: 20px;
   }
-  
+
   .tech-card {
     padding: 30px 15px;
   }
-  
+
   .project-card {
     padding: 30px 20px;
   }
-  
+
   .contact-card {
     padding: 30px 20px;
   }
@@ -583,13 +585,12 @@ body {
   overflow: hidden;
 }
 
-.footer-main-heading{
+.footer-main-heading {
   font-size: 4rem;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-weight: 300;
   margin-bottom: 4rem;
 }
-
 
 .footer-content {
   display: grid;
@@ -604,12 +605,12 @@ body {
 }
 
 .footer-heading {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: 0.6rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #E0E0E0;
+  color: #e0e0e0;
   margin-bottom: 16px;
   line-height: 1.2;
 }
@@ -638,17 +639,17 @@ body {
 }
 
 .footer-links a {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
-  color: #A0A0A0;
+  color: #a0a0a0;
   text-decoration: none;
-  line-height:0.1;
+  line-height: 0.1;
   transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #E0E0E0;
+  color: #e0e0e0;
 }
 
 .footer-bottom {
@@ -670,7 +671,6 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   font-family: "Silkscreen", sans-serif;
-
 }
 
 .footer-bottom-content p {
@@ -694,7 +694,7 @@ body {
 }
 
 .footer-bottom-links a:hover {
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 /* Footer Responsive */
@@ -710,36 +710,36 @@ body {
     padding: 60px 0 30px;
     margin-top: 80px;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
     gap: 40px;
     margin-bottom: 50px;
   }
-  
+
   .footer-column {
     text-align: left;
   }
-  
+
   .footer-heading {
     font-size: 0.8rem;
     margin-bottom: 14px;
   }
-  
+
   .footer-divider {
     margin-bottom: 20px;
   }
-  
+
   .footer-links li {
     margin-bottom: 10px;
   }
-  
+
   .footer-bottom-content {
     flex-direction: column;
     text-align: center;
     gap: 15px;
   }
-  
+
   .footer-bottom-links {
     gap: 20px;
   }
@@ -749,15 +749,15 @@ body {
   .footer-content {
     gap: 30px;
   }
-  
+
   .footer-heading {
     font-size: 0.75rem;
   }
-  
+
   .footer-links a {
     font-size: 0.9rem;
   }
-  
+
   .footer-bottom-links {
     flex-direction: column;
     gap: 10px;
@@ -772,7 +772,7 @@ body {
   bottom: -15%;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: clamp(6rem, 16vw, 20rem);
   font-weight: 900;
   line-height: 1;
@@ -782,7 +782,7 @@ body {
   z-index: 1;
   pointer-events: none;
   user-select: none;
-  background: linear-gradient(to right, #E0E0E0, #A0A0A0);
+  background: linear-gradient(to right, #e0e0e0, #a0a0a0);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

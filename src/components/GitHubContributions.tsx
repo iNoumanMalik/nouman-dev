@@ -22,8 +22,11 @@ const GitHubContributions = () => {
     return (
       <section id="github" className="section">
         <div className="container">
-          <h2 className="section-title gradient-text">
-            GitHub Contributions
+        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
+            Github{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
+              Contributions
+            </span>
           </h2>
           <div className="github-card neon-card neon-green">
             <p className="text-sm opacity-70">Loading contributions…</p>
@@ -94,10 +97,13 @@ const GitHubContributions = () => {
 
   return (
     <section id="github" className="section">
-      <div className="container">
-        <h2 className="section-title gradient-text">
-          GitHub Contributions
-        </h2>
+      <div className="max-w-[1200px] mx-auto px-[20px] w-full box-border">
+      <h2 className="text-center text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
+            Github{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-200 to-green-500 ">
+              Contributions
+            </span>
+          </h2>
 
         <div className="github-card rounded-lg p-8 border border-green-500/30 shadow-lg shadow-green-500/20">
           <div className="flex gap-3 justify-center">

@@ -133,10 +133,12 @@ const TechStackShowcase = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white">
-            Tech Stack
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
+          Technologies <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
+            I work with{" "}
+            </span>
           </h2>
-          <p className="text-gray-400 mt-3">Technologies I work with</p>
         </motion.div>
 
         {/* Enhanced Category Filter Pills */}

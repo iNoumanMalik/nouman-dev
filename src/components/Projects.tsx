@@ -291,10 +291,12 @@ function Projects() {
   return (
     <section className="relative w-full bg-black py-24">
       <div className="w-full max-w-4xl mx-auto px-6 mb-20 text-center">
-        <h2 className="text-white text-5xl md:text-7xl font-black mb-2 tracking-tighter">
-          Live Projects
-          <br />
-        </h2>
+      <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-2 ">
+            Live{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
+              Projects
+            </span>
+          </h2>
         <p className="text-white/40 font-mono">SCROLL TO EXPLORE ARCHIVE</p>
       </div>
 

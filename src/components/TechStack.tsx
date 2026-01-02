@@ -9,7 +9,15 @@ const stackData = [
     icon: <Zap size={24} />,
     accent: "cyan",
     description: "Building modern, responsive, and performant user interfaces.",
-    skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Framer Motion", "Responsive UI"],
+    skills: [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Framer Motion",
+      "Responsive UI",
+    ],
     details: [
       { name: "React/Next.js", level: 95 },
       { name: "TypeScript", level: 90 },
@@ -21,7 +29,13 @@ const stackData = [
     icon: <Cpu size={24} />,
     accent: "green",
     description: "Developing scalable, secure, and reliable RESTful APIs.",
-    skills: ["Node.js", "Express.js", "JWT Auth", "RESTful API", "Error Handling"],
+    skills: [
+      "Node.js",
+      "Express.js",
+      "JWT Auth",
+      "RESTful API",
+      "Error Handling",
+    ],
     details: [
       { name: "Node/Express", level: 90 },
       { name: "Authentication (JWT)", level: 85 },
@@ -43,7 +57,8 @@ const stackData = [
     title: "☁️ DevOps & Automation",
     icon: <Cloud size={24} />,
     accent: "indigo",
-    description: "Version control, continuous deployment, and workflow automation.",
+    description:
+      "Version control, continuous deployment, and workflow automation.",
     skills: ["Git & GitHub", "Vercel", "Render", "n8n", "Postman", "VS Code"],
     details: [
       { name: "Git/Version Control", level: 95 },
@@ -114,7 +129,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ name, level, accent }) => {
 };
 
 interface LayerCardProps {
-  layer: typeof stackData[0];
+  layer: (typeof stackData)[0];
   index: number;
 }
 
@@ -144,9 +159,7 @@ const LayerCard: React.FC<LayerCardProps> = ({ layer, index }) => {
           >
             {layer.icon}
           </motion.span>
-          <h3 className="text-2xl font-bold ml-3 text-white">
-            {layer.title}
-          </h3>
+          <h3 className="text-2xl font-bold ml-3 text-white">{layer.title}</h3>
         </div>
         <motion.div
           animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -207,7 +220,7 @@ const LayerCard: React.FC<LayerCardProps> = ({ layer, index }) => {
 
 const TechStack = () => {
   return (
-    <section id="tech" className="section bg-black/80 py-20">
+    <section id="tech" className="section bg-black/80 py-20 ">
       {/* Custom Styles for Pattrn.io Neon Aesthetic */}
       <style>{`
         .shadow-glow-cyan { box-shadow: 0 0 8px #00a4ff; }
@@ -221,10 +234,17 @@ const TechStack = () => {
         }
       `}</style>
 
-      <div className="container mx-auto px-6 max-w-4xl text-white">
-        <h2 className="section-title gradient-text text-center text-4xl font-bold mb-4">
-          My Engineering Stack
-        </h2>
+      <div className="max-w-[1200px] mx-auto px-5 w-full box-border flex flex-col text-white">
+        <div className="text-center space-y-8 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
+            My Engineering <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
+              Tech Stack{" "}
+            </span>
+          </h2>
+        </div>
+
+        {/* <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-600">Deployment</span> */}
 
         <div className="layer-stack">
           {stackData.map((layer, index) => (
