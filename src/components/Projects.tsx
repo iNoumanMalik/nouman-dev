@@ -68,7 +68,7 @@ const projects = [
     id: 6,
     title: "Therapistreet",
     description:
-      "A therapist listing and lead capture platform built with Next.js, featuring a custom contact form integrated with Google Scripts for data handling.",
+      "Therapistreet is a calm, all-in-one platform designed to give therapists full autonomy over their practice, including branding, client management, and growth.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Google Scripts"],
     color: "from-blue-400 to-cyan-800",
     image: therapistreetLogo,
@@ -307,12 +307,6 @@ function Projects() {
             total={projects.length}
           />
         ))}
-      </div>
-
-      {/* Background visual elements */}
-      <div className="fixed inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500 rounded-full blur-[150px]" />
       </div>
     </section>
   );
