@@ -5,6 +5,7 @@ import "./App.css"; // Global styles
 
 // Import Components and Pages
 import Navbar from "./components/Navbar";
+import ScrollytellingHero from "./components/Hero";
 import Hero from "./pages/Hero";
 import About from "./pages/About";
 import TechStack from "./components/TechStack";
@@ -47,8 +48,7 @@ function App() {
   return (
     <div className="app" ref={appRef}>
       <Navbar />
-      <Hero />
-      <About />
+      <ScrollytellingHero/>
       <TechStack />
       <SkillsCloud/>
       <Projects />
