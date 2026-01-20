@@ -220,7 +220,7 @@ export default function ContactSection() {
                     href="https://github.com/iNoumanMalik"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/60 hover:text-blue-400 transition-colors flex items-center gap-2"
+                    className="text-sm text-[#646cff] hover:text-blue-400 transition-colors flex items-center gap-2"
                   >
                     GitHub <span className="text-[10px]">↗</span>
                   </a>
@@ -228,7 +228,7 @@ export default function ContactSection() {
                     href="https://www.linkedin.com/in/nouman-malik-me/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/60 hover:text-blue-400 transition-colors flex items-center gap-2"
+                    className="text-sm text-[#646cff] hover:text-blue-400 transition-colors flex items-center gap-2"
                   >
                     LinkedIn <span className="text-[10px]">↗</span>
                   </a>

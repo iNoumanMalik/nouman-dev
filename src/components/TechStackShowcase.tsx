@@ -1,40 +1,34 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useMemo } from "react";
 import { technologies, Tech } from "../data/technologies";
-import { 
-  Grid, 
-  Monitor, 
-  Server, 
-  Database, 
-  Smartphone, 
+import {
+  Grid,
+  Monitor,
+  Server,
+  Database,
+  Smartphone,
   Wrench,
   Code,
-  Zap,
-  Globe,
-  Cpu,
-  Smartphone as MobileIcon,
-  Terminal,
-  Palette,
-  Cloud,
+ 
   CircleEllipsis
 
 } from 'lucide-react';
 
 const CategoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  all: (props) => <Grid className="w-5 h-5" {...props} />, 
-  frontend: (props) => <Monitor className="w-5 h-5" {...props} />, 
-  backend: (props) => <Server className="w-5 h-5" {...props} />, 
-  database: (props) => <Database className="w-5 h-5" {...props} />, 
-  mobile: (props) => <Smartphone className="w-5 h-5" {...props} />, 
-  tools: (props) => <Wrench className="w-5 h-5" {...props} />, 
-  languages: (props) => <Code className="w-5 h-5" {...props} />, 
-  other: (props) => <CircleEllipsis className="w-5 h-5" {...props} />, 
+  all: (props) => <Grid className="w-5 h-5" {...props} />,
+  frontend: (props) => <Monitor className="w-5 h-5" {...props} />,
+  backend: (props) => <Server className="w-5 h-5" {...props} />,
+  database: (props) => <Database className="w-5 h-5" {...props} />,
+  mobile: (props) => <Smartphone className="w-5 h-5" {...props} />,
+  tools: (props) => <Wrench className="w-5 h-5" {...props} />,
+  languages: (props) => <Code className="w-5 h-5" {...props} />,
+  other: (props) => <CircleEllipsis className="w-5 h-5" {...props} />,
 };
 
-const CategoryPill = ({ category, selected, onClick }: { 
-  category: string; 
-  selected: boolean; 
-  onClick: () => void 
+const CategoryPill = ({ category, selected, onClick }: {
+  category: string;
+  selected: boolean;
+  onClick: () => void
 }) => {
   const Icon = CategoryIcons[category] || CategoryIcons['all'];
   const isAll = category === 'all';
@@ -49,7 +43,7 @@ const CategoryPill = ({ category, selected, onClick }: {
         relative flex items-center justify-center p-3 rounded-full font-medium
         transition-all duration-300 ease-in-out group
         ${selected
-          ? "bg-gradient-to-r from-cyan-500/10 via-blue-500/5 to-transparent text-cyan-300"
+          ? "bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-transparent text-blue-300"
           : "bg-transparent text-gray-400 hover:text-white"
         }
       `}
@@ -63,15 +57,15 @@ const CategoryPill = ({ category, selected, onClick }: {
       {selected && (
         <motion.div
           layoutId="category-indicator"
-          className="absolute inset-0 rounded-full border border-cyan-400/30 bg-gradient-to-r from-cyan-500/5 to-blue-500/5"
+          className="absolute inset-0 rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/5 to-indigo-500/5"
         />
       )}
-      
+
       {/* Hover ring */}
       <div className="absolute inset-0 rounded-full border border-transparent group-hover:border-white/10 transition-colors" />
-      
+
       <div className="flex items-center gap-2 relative z-10">
-        <Icon className={selected ? "text-cyan-300" : "group-hover:text-white transition-colors"} />
+        <Icon className={selected ? "text-blue-300" : "group-hover:text-white transition-colors"} />
         <AnimatePresence>
           {selected && (
             <motion.span
@@ -89,6 +83,7 @@ const CategoryPill = ({ category, selected, onClick }: {
   );
 };
 
+
 const TechStackShowcase = () => {
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -97,14 +92,14 @@ const TechStackShowcase = () => {
   const uniqueAllTechnologies = useMemo(() => {
     const seen = new Set<string>();
     const result: Tech[] = [];
-    
+
     Object.values(technologies).flat().forEach((tech: Tech) => {
       if (!seen.has(tech.name)) {
         seen.add(tech.name);
         result.push(tech);
       }
     });
-    
+
     return result;
   }, []);
 
@@ -134,9 +129,9 @@ const TechStackShowcase = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
-          Technologies <br />
+            Technologies <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
-            I work with{" "}
+              I work with{" "}
             </span>
           </h2>
         </motion.div>
@@ -145,7 +140,7 @@ const TechStackShowcase = () => {
         <div className="relative mb-16 md:mb-8">
           {/* Background decorative elements */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          
+
           <div className="grid grid-cols-4 items-center md:flex md:flex-wrap justify-center md:gap-2 relative">
             {categories.map((cat) => (
               <motion.div
@@ -161,7 +156,7 @@ const TechStackShowcase = () => {
                   selected={selectedCategory === cat}
                   onClick={() => setSelectedCategory(cat)}
                 />
-                
+
                 {/* Hover tooltip for unselected categories */}
                 <AnimatePresence>
                   {hoveredCategory === cat && selectedCategory !== cat && (
@@ -183,29 +178,29 @@ const TechStackShowcase = () => {
               </motion.div>
             ))}
           </div>
-          
+
           {/* Active category indicator */}
           <motion.div
             layoutId="category-background"
-            className="absolute left-0 top-0 rounded-full bg-gradient-to-r from-cyan-500/5 to-blue-500/5 border border-cyan-400/10 backdrop-blur-sm -z-10"
+            className="absolute left-0 top-0 rounded-full bg-gradient-to-r from-blue-500/5 to-indigo-500/5 border border-blue-400/10 backdrop-blur-sm -z-10"
             style={{
-              width: selectedCategory === 'all' ? '44px' : 
-                     selectedCategory === 'frontend' ? '100px' :
-                     selectedCategory === 'backend' ? '90px' :
-                     selectedCategory === 'database' ? '110px' :
-                     selectedCategory === 'mobile' ? '95px' :
-                     selectedCategory === 'tools' ? '85px' :
-                     selectedCategory === 'languages' ? '115px' :
-                     selectedCategory === 'other' ? '90px' : '44px',
+              width: selectedCategory === 'all' ? '44px' :
+                selectedCategory === 'frontend' ? '100px' :
+                  selectedCategory === 'backend' ? '90px' :
+                    selectedCategory === 'database' ? '110px' :
+                      selectedCategory === 'mobile' ? '95px' :
+                        selectedCategory === 'tools' ? '85px' :
+                          selectedCategory === 'languages' ? '115px' :
+                            selectedCategory === 'other' ? '90px' : '44px',
               height: '44px',
               transform: selectedCategory === 'all' ? 'translateX(0px)' :
-                        selectedCategory === 'frontend' ? 'translateX(46px)' :
-                        selectedCategory === 'backend' ? 'translateX(100px)' :
-                        selectedCategory === 'database' ? 'translateX(154px)' :
-                        selectedCategory === 'mobile' ? 'translateX(218px)' :
+                selectedCategory === 'frontend' ? 'translateX(46px)' :
+                  selectedCategory === 'backend' ? 'translateX(100px)' :
+                    selectedCategory === 'database' ? 'translateX(154px)' :
+                      selectedCategory === 'mobile' ? 'translateX(218px)' :
                         selectedCategory === 'tools' ? 'translateX(277px)' :
-                        selectedCategory === 'languages' ? 'translateX(326px)' :
-                        selectedCategory === 'other' ? 'translateX(395px)' : 'translateX(0px)',
+                          selectedCategory === 'languages' ? 'translateX(326px)' :
+                            selectedCategory === 'other' ? 'translateX(395px)' : 'translateX(0px)',
             }}
           />
         </div>
@@ -262,7 +257,7 @@ const TechStackShowcase = () => {
                         <h3 className="font-bold text-white text-lg">
                           {tech.name}
                         </h3>
-                        <span className="text-cyan-400 text-xs font-medium capitalize">
+                        <span className="text-blue-400 text-xs font-medium capitalize">
                           {findTechCategory(tech.name)}
                         </span>
                       </div>

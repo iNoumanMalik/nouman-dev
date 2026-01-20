@@ -15,10 +15,10 @@ const projects = [
     description:
       "A full-scale hospital management system for an eye care clinic, handling appointments, patients, dispensing, billing, and operational workflows.",
     tech: ["React", "TypeScript", "Material UI", "Zustand", "NestJS", "MySQL"],
-    color: "from-blue-700 to-cyan-900",
+    color: "from-blue-700 to-indigo-900",
     image: optoLogo,
-    demoLink: "https://opto.computerized.ai/", 
-    codeLink: "https://github.com/computerized-ai/optopro-frontend", 
+    demoLink: "https://opto.computerized.ai/",
+    codeLink: "https://github.com/computerized-ai/optopro-frontend",
   },
   {
     id: 2,
@@ -26,10 +26,10 @@ const projects = [
     description:
       "An AI voice agent portal with real-time data integration, designed to manage conversations, analytics, and intelligent automation.",
     tech: ["React", "TypeScript", "Tailwind CSS", "APIs", "AI Integration"],
-    color: "from-blue-600 to-cyan-800",
+    color: "from-blue-600 to-indigo-800",
     image: zerolineLogo,
-    demoLink: "https://zero.computerized.ai/", 
-    codeLink: "https://github.com/computerized-ai/computerized", 
+    demoLink: "https://zero.computerized.ai/",
+    codeLink: "https://github.com/computerized-ai/computerized",
   },
   {
     id: 3,
@@ -37,10 +37,10 @@ const projects = [
     description:
       "An AI-powered gym lead generation landing page focused on conversions, performance, and modern UI/UX.",
     tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    color: "from-blue-500 to-cyan-900",
+    color: "from-blue-500 to-indigo-900",
     image: fitlabLogo,
-    demoLink: "https://fitlab.computerized.ai/", 
-    codeLink: "https://github.com/computerized-ai/ai-fitness-website", 
+    demoLink: "https://fitlab.computerized.ai/",
+    codeLink: "https://github.com/computerized-ai/ai-fitness-website",
   },
   {
     id: 4,
@@ -48,10 +48,10 @@ const projects = [
     description:
       "A mental health website featuring online session booking with Calendly and Zoom integration, focused on accessibility and calm UX.",
     tech: ["React", "TypeScript", "Tailwind CSS", "Calendly", "Zoom API"],
-    color: "from-blue-400 to-cyan-800",
+    color: "from-blue-400 to-indigo-800",
     image: abtahiLogo,
-    demoLink: "https://www.abtahicounselling.co.uk/", 
-    codeLink: "https://github.com/computerized-ai/abtahi-counselling", 
+    demoLink: "https://www.abtahicounselling.co.uk/",
+    codeLink: "https://github.com/computerized-ai/abtahi-counselling",
   },
   {
     id: 5,
@@ -59,10 +59,10 @@ const projects = [
     description:
       "A business website for a trading company, focused on showcasing services, products, and building client trust with a clean UI.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
-    color: "from-blue-400 to-cyan-800",
+    color: "from-blue-400 to-indigo-800",
     image: zcLogo,
-    demoLink: "https://zc-traders.vercel.app/", 
-    codeLink: "https://github.com/iNoumanMalik/zc-traders", 
+    demoLink: "https://zc-traders.vercel.app/",
+    codeLink: "https://github.com/iNoumanMalik/zc-traders",
   },
   {
     id: 6,
@@ -70,10 +70,10 @@ const projects = [
     description:
       "Therapistreet is a calm, all-in-one platform designed to give therapists full autonomy over their practice, including branding, client management, and growth.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Google Scripts"],
-    color: "from-blue-400 to-cyan-800",
+    color: "from-blue-400 to-indigo-800",
     image: therapistreetLogo,
-    demoLink: "https://www.therapistreet.com/", 
-    codeLink: "https://github.com/computerized-ai/therapistreet", 
+    demoLink: "https://www.therapistreet.com/",
+    codeLink: "https://github.com/computerized-ai/therapistreet",
   },
   {
     id: 7,
@@ -81,10 +81,10 @@ const projects = [
     description:
       "A client-facing web platform designed to present company offerings with a modern layout and responsive user experience.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
-    color: "from-blue-300 to-cyan-800",
+    color: "from-blue-300 to-indigo-800",
     image: zamungLogo,
-    demoLink: "https://www.zamungclient.com/", 
-    codeLink: "https://github.com/iNoumanMalik/landmark-builders", 
+    demoLink: "https://www.zamungclient.com/",
+    codeLink: "https://github.com/iNoumanMalik/landmark-builders",
   },
 ];
 
@@ -206,12 +206,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               >
                 {/* Hover glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                
+
                 {/* Animated border gradient */}
                 <div className="absolute inset-0 rounded-full p-[1.5px]">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                
+
                 <span className="relative flex items-center gap-2 text-white">
                   <svg className="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -291,12 +291,12 @@ function Projects() {
   return (
     <section className="relative w-full bg-black py-24">
       <div className="w-full max-w-4xl mx-auto px-6 mb-20 text-center">
-      <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-2 ">
-            Live{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
-              Projects
-            </span>
-          </h2>
+        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-2 ">
+          Live{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
+            Projects
+          </span>
+        </h2>
         <p className="text-white/40 font-mono">SCROLL TO EXPLORE ARCHIVE</p>
       </div>
 
