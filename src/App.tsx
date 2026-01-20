@@ -5,12 +5,12 @@ import "./App.css"; // Global styles
 
 // Import Components and Pages
 import Navbar from "./components/Navbar";
-import Hero from "./pages/Hero";
-import About from "./pages/About";
+import ScrollytellingHero from "./components/Hero";
 import TechStack from "./components/TechStack";
 import SkillsCloud from "./components/TechStackShowcase";
+import Services from "./components/Services";
 import Projects from "./components/Projects";
-import Companies from "./components/Companies";
+import Experience from "./components/Experience";
 import GitHubContributions from "./components/GitHubContributions";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -47,12 +47,12 @@ function App() {
   return (
     <div className="app" ref={appRef}>
       <Navbar />
-      <Hero />
-      <About />
+      <ScrollytellingHero />
       <TechStack />
-      <SkillsCloud/>
+      <SkillsCloud />
+      <Services />
       <Projects />
-      <Companies />
+      <Experience />
       <GitHubContributions />
       <Contact />
       <Footer />
