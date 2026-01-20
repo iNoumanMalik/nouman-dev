@@ -64,58 +64,25 @@ const experiences: Experience[] = [
   }
 ];
 
-// Extend Window interface properly for global usage
-declare global {
-  interface Window {
-    gsap: any;
-    ScrollTrigger: any;
-  }
-}
+import gsap from "gsap";
 
 export default function Experience() {
   // Explicitly typing the state to Experience | null to avoid 'never' errors
   const [selectedExp, setSelectedExp] = useState<Experience | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const [libsLoaded, setLibsLoaded] = useState(false);
 
   useEffect(() => {
-    const loadGSAP = async () => {
-      // Check if already loaded
-      if (window.gsap && window.ScrollTrigger) {
-        setLibsLoaded(true);
-        return;
-      }
-      
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
-      script.onload = () => {
-        const triggerScript = document.createElement('script');
-        triggerScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js';
-        triggerScript.onload = () => {
-          if (window.gsap) {
-            window.gsap.registerPlugin(window.ScrollTrigger);
-            setLibsLoaded(true);
-          }
-        };
-        document.head.appendChild(triggerScript);
-      };
-      document.head.appendChild(script);
-    };
-    loadGSAP();
-  }, []);
-
-  useEffect(() => {
-    if (libsLoaded && selectedExp && overlayRef.current && window.gsap) {
-      window.gsap.fromTo(overlayRef.current, 
+    if (selectedExp && overlayRef.current) {
+      gsap.fromTo(overlayRef.current,
         { x: '100%', opacity: 0 },
         { x: '0%', opacity: 1, duration: 0.5, ease: "power3.out" }
       );
     }
-  }, [selectedExp, libsLoaded]);
+  }, [selectedExp]);
 
   const closeOverlay = () => {
-    if (overlayRef.current && window.gsap) {
-      window.gsap.to(overlayRef.current, {
+    if (overlayRef.current) {
+      gsap.to(overlayRef.current, {
         x: '100%',
         opacity: 0,
         duration: 0.4,
@@ -137,14 +104,14 @@ export default function Experience() {
 
         <div className="relative border-l border-white/10 ml-4 space-y-12">
           {experiences.map((exp) => (
-            <div 
-              key={exp.id} 
+            <div
+              key={exp.id}
               onClick={() => setSelectedExp(exp)}
               className="relative pl-10 group cursor-pointer"
             >
               {/* Timeline Dot - Using canonical Tailwind classes w-2.5 h-2.5 */}
               <div className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-white/20 group-hover:bg-white group-hover:scale-150 transition-all" />
-              
+
               <div className="bg-[#0A0A0A] border border-white/5 p-6 rounded-2xl hover:border-white/20 hover:bg-[#111] transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.03)]">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                   <div>
@@ -165,17 +132,17 @@ export default function Experience() {
 
       {selectedExp && (
         <div className="fixed inset-0 z-50 flex justify-end">
-          <div 
+          <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={closeOverlay}
           />
-          
-          <div 
+
+          <div
             ref={overlayRef}
             className="relative w-full md:w-[65%] lg:w-[50%] h-full bg-[#111] border-l border-white/10 shadow-2xl overflow-y-auto"
           >
             <div className="p-8 md:p-12">
-              <button 
+              <button
                 onClick={closeOverlay}
                 className="mb-12 ml-auto text-white/40 hover:text-white flex items-center gap-2 font-mono text-xs uppercase tracking-widest"
               >
