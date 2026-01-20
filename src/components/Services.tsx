@@ -19,6 +19,7 @@ import {
   Aperture,
   Globe,
   Cpu,
+  LucideIcon,
 } from "lucide-react";
 
 // Register ScrollTrigger
@@ -27,7 +28,7 @@ gsap.registerPlugin(ScrollTrigger);
 // --- Data Types ---
 type ServiceItem = {
   title: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
 };
 
 type CategoryItem = {
@@ -202,11 +203,10 @@ const Services = () => {
                                         w-full h-full rounded-3xl p-8 md:p-12 relative overflow-hidden
                                         flex flex-col justify-between 
                                         border transition-all duration-500 group
-                                        ${
-                                          isActive
-                                            ? "bg-[#111] border-white/20 shadow-2xl scale-100 opacity-100"
-                                            : "bg-[#050505] border-white/5 opacity-50 scale-95 blur-[2px]"
-                                        }
+                                        ${isActive
+                          ? "bg-[#111] border-white/20 shadow-2xl scale-100 opacity-100"
+                          : "bg-[#050505] border-white/5 opacity-50 scale-95 blur-[2px]"
+                        }
                                     `}
                     >
                       {/* Active Glow */}
