@@ -86,7 +86,7 @@ export default function ContactSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-[#050505] text-white py-24 px-6 overflow-hidden flex flex-col items-center justify-center"
+      className="relative w-full min-h-screen  text-white py-24 px-6 overflow-hidden flex flex-col items-center justify-center"
     >
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

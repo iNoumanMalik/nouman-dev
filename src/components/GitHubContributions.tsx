@@ -96,7 +96,7 @@ const GitHubContributions = () => {
   };
 
   return (
-    <section id="github" className="section">
+    <section id="github" className="section bg-[#050505]">
       <div className="max-w-[1200px] mx-auto px-[20px] w-full box-border">
       <h2 className="text-center text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
             Github{" "}
@@ -134,20 +134,6 @@ const GitHubContributions = () => {
                 {weeks.map((week, weekIndex) => (
                   <div key={weekIndex} className="flex flex-col gap-[3px]">
                     {week.contributionDays.map((day, dayIndex) => {
-                      // Enhance color visibility
-                      const enhanceColor = (color: string) => {
-                        if (!color || color === "#161b22") return "#161b22";
-                        // Parse hex color and increase brightness
-                        const hex = color.replace("#", "");
-                        const r = parseInt(hex.substr(0, 2), 16);
-                        const g = parseInt(hex.substr(2, 2), 16);
-                        const b = parseInt(hex.substr(4, 2), 16);
-                        
-                        // Increase brightness by 40%
-                        const brighten = (val: number) => Math.min(255, Math.floor(val * 1.4));
-                        
-                        return `rgb(${brighten(r)}, ${brighten(g)}, ${brighten(b)})`;
-                      };
 
                       return (
                         <motion.div
