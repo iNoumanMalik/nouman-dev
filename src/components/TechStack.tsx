@@ -136,12 +136,12 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
           {/* <div className={`p-3 rounded-2xl bg-white/5 border border-white/10 text-white ${isHovered ? 'scale-110' : ''} transition-transform duration-300`}>
             {React.cloneElement(item.icon as React.ReactElement<any>, { className: `w-6 h-6 text-${item.accent}-400` })}
           </div> */}
-          <div className={`text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-white/5 bg-white/5 text-${item.accent}-300/80`}>
+          <div className={`text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-white/5 text-blue-600 dark:text-${item.accent}-300/80`}>
             Module 0{stackData.indexOf(item) + 1}
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/70 transition-colors">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight group-hover:text-blue-600 dark:group-hover:text-transparent dark:group-hover:bg-clip-text dark:group-hover:bg-gradient-to-r dark:group-hover:from-white dark:group-hover:to-white/70 transition-colors">
           {item.title}
         </h3>
 
@@ -152,21 +152,21 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
         {/* Skills Tags */}
         <div className="flex flex-wrap gap-2 mb-8">
           {item.skills.slice(0, 4).map((skill) => (
-            <span key={skill} className={`px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-md border border-white/5 bg-white/5 text-white/70 group-hover:border-${item.accent}-500/30 group-hover:text-${item.accent}-300 transition-colors`}>
+            <span key={skill} className={`px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-md border border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-white/70 group-hover:border-blue-500/30 dark:group-hover:border-${item.accent}-500/30 group-hover:text-blue-600 dark:group-hover:text-${item.accent}-300 transition-colors`}>
               {skill}
             </span>
           ))}
         </div>
 
         {/* Hover Details (Progress Bars) - Push to bottom */}
-        <div className="mt-auto space-y-3 pt-6 border-t border-white/5">
+        <div className="mt-auto space-y-3 pt-6 border-t border-gray-100 dark:border-white/5">
           {item.details.map((detail, idx) => (
             <div key={idx} className="space-y-1">
-              <div className="flex justify-between text-[10px] uppercase tracking-widest text-white/40 group-hover:text-white/70 transition-colors">
+              <div className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500 dark:text-white/40 group-hover:text-gray-900 dark:group-hover:text-white/70 transition-colors">
                 <span>{detail.name}</span>
                 <span>{detail.level}%</span>
               </div>
-              <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+              <div className="h-1 w-full bg-gray-200 dark:bg-white/5 rounded-full overflow-hidden">
                 <motion.div
                   className={`h-full bg-gradient-to-r ${selectedGradient}`}
                   initial={{ width: 0 }}
@@ -207,12 +207,12 @@ const BentoTechStack = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-600">Arsenal</span>
             </h2>
           </div>
-          <div className="hidden md:flex items-center gap-4 text-xs font-mono text-white/30 uppercase tracking-widest">
+          <div className="hidden md:flex items-center gap-4 text-xs font-mono text-gray-400 dark:text-white/30 uppercase tracking-widest">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               <span>Live Systems</span>
             </div>
-            <div className="w-px h-8 bg-white/10" />
+            <div className="w-px h-8 bg-gray-200 dark:bg-white/10" />
             <span>v3.0.0</span>
           </div>
         </div>

@@ -171,7 +171,7 @@ const Services = () => {
                 Deliver
               </span>
             </h2>
-            <p className="mt-4 text-white/40 text-sm font-mono md:hidden">
+            <p className="mt-4 text-gray-400 dark:text-white/40 text-sm font-mono md:hidden">
               Swipe to explore →
             </p>
           </div>
@@ -239,7 +239,7 @@ const Services = () => {
                       </div>
 
                       {/* Mobile Indicator */}
-                      <div className="md:hidden absolute bottom-6 right-6 text-white/20">
+                      <div className="md:hidden absolute bottom-6 right-6 text-gray-200 dark:text-white/20">
                         0{index + 1}
                       </div>
                     </motion.div>
@@ -281,7 +281,7 @@ const Services = () => {
             </AnimatePresence>
 
             {/* Progress Bar (Desktop) */}
-            <div className="hidden md:block absolute bottom-0 left-12 right-12 h-1 bg-white/5 rounded-full mt-12">
+            <div className="hidden md:block absolute bottom-0 left-12 right-12 h-1 bg-gray-200 dark:bg-white/5 rounded-full mt-12">
               <motion.div
                 className="h-full bg-blue-500 rounded-full"
                 animate={{

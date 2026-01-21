@@ -218,7 +218,7 @@ const TechStackShowcase = () => {
                 whileHover={{ scale: 1.05 }}
                 className="w-14 h-14 md:w-16 md:h-16 mx-auto flex items-center justify-center
                 rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]
-                shadow-lg cursor-pointer border border-white/20 relative overflow-hidden"
+                shadow-lg cursor-pointer border border-gray-200 dark:border-white/20 relative overflow-hidden"
               >
                 {tech.imgSrc ? (
                   <img src={tech.imgSrc} alt={tech.name} className="w-7 h-7 md:w-9 md:h-9" />
