@@ -14,6 +14,7 @@ import Experience from "./components/Experience";
 import GitHubContributions from "./components/GitHubContributions";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import FloatingActionButton from "./components/FloatingActionButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,6 +57,7 @@ function App() {
       <GitHubContributions />
       <Contact />
       <Footer />
+      <FloatingActionButton />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect, useMemo } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,7 +16,6 @@ import {
   GraduationCap,
   History,
   Wrench,
-  Aperture,
   Globe,
   Cpu,
   LucideIcon,
