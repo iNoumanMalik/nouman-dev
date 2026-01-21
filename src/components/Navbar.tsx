@@ -1,14 +1,30 @@
 import { useState, useEffect } from "react";
-import { useTheme } from "../context/ThemeContext";
+// import { useTheme } from "../context/ThemeContext";
 import logo from "../assets/layers-ic.png";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-const handleLogoClick = () => {
-  window.location.href = "/";
-};
+gsap.registerPlugin(ScrollToPlugin);
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
+
+  const handleLogoClick = () => {
+    gsap.to(window, { duration: 1, scrollTo: 0, ease: "power2.inOut" });
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.querySelector(id);
+    if (element) {
+      gsap.to(window, {
+        duration: 1,
+        scrollTo: { y: element, offsetY: 0 },
+        ease: "power2.inOut"
+      });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,10 +54,11 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-2 md:gap-4">
-          {["About", "Tech", "Projects", "Experience"].map((item) => (
+          {["TechStack", "Services", "Projects", "Experience"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
+              onClick={(e) => handleNavClick(e, `#${item.toLowerCase()}`)}
               className="px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors uppercase tracking-widest font-mono"
             >
               {item}
@@ -49,6 +66,7 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             className="ml-4 rounded-[20px] border border-gray-200 dark:border-transparent px-5 py-2 text-sm font-bold text-gray-900 dark:text-white bg-white dark:bg-gray-800 cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-blue-600 dark:hover:border-gray-600"
           >
             Contact

@@ -189,7 +189,7 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
 // --- Main Layout ---
 const BentoTechStack = () => {
   return (
-    <section id="tech" className="relative py-32 bg-transparent px-6 overflow-hidden transition-colors duration-300">
+    <section id="techstack" className="relative py-32 bg-transparent px-6 overflow-hidden transition-colors duration-300">
 
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />

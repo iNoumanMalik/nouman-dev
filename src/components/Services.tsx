@@ -152,6 +152,7 @@ const Services = () => {
   return (
     <div
       ref={componentRef}
+      id="services"
       className="relative bg-transparent text-gray-900 dark:text-white overflow-hidden transition-colors duration-300"
     >
       {/* Desktop: Pinned Height Container / Mobile: Auto Height */}
