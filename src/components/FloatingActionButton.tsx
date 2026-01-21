@@ -16,6 +16,7 @@ const FloatingActionButton = () => {
   // Default to dark mode for now, since we need to toggle
   const [isDarkMode, setIsDarkMode] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [copiedEmail, setCopiedEmail] = useState(false);
 
   // Toggle Dark Mode (placeholder logic)
   const toggleTheme = () => {
@@ -51,34 +52,59 @@ const FloatingActionButton = () => {
     {
       label: "WhatsApp",
       icon: <FaWhatsapp size={20} />,
-      onClick: () => console.log("WhatsApp clicked"),
-      // color: "bg-green-500",
+      onClick: () => {
+        const message = encodeURIComponent(
+          "Hi Nouman, I came across your portfolio and would like to connect.",
+        );
+        window.open(
+          `https://wa.me/923144221693?text=${message}`,
+          "_blank",
+          "noopener,noreferrer",
+        );
+      },
     },
     {
-      label: "Email",
+      label: copiedEmail ? "Copied!" : "Email",
       icon: <Mail size={20} />,
-      onClick: () => console.log("Email clicked"),
-      // color: "bg-blue-500",
+      onClick: async () => {
+        const email = "inoumanmalik@outlook.com";
+
+        try {
+          await navigator.clipboard.writeText(email);
+          setCopiedEmail(true);
+
+          setTimeout(() => {
+            setCopiedEmail(false);
+          }, 1500);
+        } catch (err) {
+          console.error("Clipboard copy failed", err);
+        }
+        setTimeout(() => {
+          window.location.href =
+            "mailto:inoumanmalik@outlook.com?subject=Portfolio Inquiry&body=Hi Nouman, I saw your portfolio and would like to connect.";
+        }, 500);
+      },
     },
     {
       label: isDarkMode ? "Light Mode" : "Dark Mode",
       icon: isDarkMode ? <Sun size={20} /> : <Moon size={20} />,
       onClick: toggleTheme,
-      // color: "bg-purple-500",
     },
     {
       label: "Resume",
       icon: <FileText size={20} />,
       onClick: () => {
+        const pdfUrl = "/Nouman.pdf";
+
         const link = document.createElement("a");
-        link.href = "/Nouman.pdf";
+        link.href = pdfUrl;
         link.download = "Nouman.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      },
 
-      // color: "bg-orange-500",
+        window.open(pdfUrl, "_blank", "noopener,noreferrer");
+      },
     },
   ];
 
