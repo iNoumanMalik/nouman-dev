@@ -9,7 +9,7 @@ import {
   Smartphone,
   Wrench,
   Code,
- 
+
   CircleEllipsis
 
 } from 'lucide-react';
@@ -43,8 +43,8 @@ const CategoryPill = ({ category, selected, onClick }: {
         relative flex items-center justify-center p-3 rounded-full font-medium
         transition-all duration-300 ease-in-out group
         ${selected
-          ? "bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-transparent text-blue-300"
-          : "bg-transparent text-gray-400 hover:text-white"
+          ? "bg-gradient-to-r from-blue-600/10 via-indigo-600/5 to-transparent text-blue-600 dark:text-blue-300"
+          : "bg-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
         }
       `}
       style={{
@@ -57,15 +57,15 @@ const CategoryPill = ({ category, selected, onClick }: {
       {selected && (
         <motion.div
           layoutId="category-indicator"
-          className="absolute inset-0 rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/5 to-indigo-500/5"
+          className="absolute inset-0 rounded-full border border-blue-600/30 dark:border-blue-400/30 bg-gradient-to-r from-blue-600/5 to-indigo-600/5 dark:from-blue-500/5 dark:to-indigo-500/5"
         />
       )}
 
       {/* Hover ring */}
-      <div className="absolute inset-0 rounded-full border border-transparent group-hover:border-white/10 transition-colors" />
+      <div className="absolute inset-0 rounded-full border border-transparent group-hover:border-gray-900/10 dark:group-hover:border-white/10 transition-colors" />
 
       <div className="flex items-center gap-2 relative z-10">
-        <Icon className={selected ? "text-blue-300" : "group-hover:text-white transition-colors"} />
+        <Icon className={selected ? "text-blue-600 dark:text-blue-300" : "group-hover:text-gray-900 dark:group-hover:text-white transition-colors"} />
         <AnimatePresence>
           {selected && (
             <motion.span
@@ -120,7 +120,7 @@ const TechStackShowcase = () => {
   const categories = ["all", ...Object.keys(technologies)];
 
   return (
-    <div className="min-h-screen bg-black py-20 px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-black py-20 px-4 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <motion.div
@@ -128,9 +128,9 @@ const TechStackShowcase = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8 text-gray-900 dark:text-white">
             Technologies <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-600 ">
               I work with{" "}
             </span>
           </h2>
@@ -139,7 +139,7 @@ const TechStackShowcase = () => {
         {/* Enhanced Category Filter Pills */}
         <div className="relative mb-16 md:mb-8">
           {/* Background decorative elements */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-gray-900/10 dark:via-white/10 to-transparent" />
 
           <div className="grid grid-cols-4 items-center md:flex md:flex-wrap justify-center md:gap-2 relative">
             {categories.map((cat) => (
@@ -227,7 +227,7 @@ const TechStackShowcase = () => {
                 )}
               </motion.div>
 
-              <p className="text-center text-white/90 text-xs md:text-sm mt-2 font-medium">
+              <p className="text-center text-gray-600 dark:text-white/90 text-xs md:text-sm mt-2 font-medium">
                 {tech.name}
               </p>
 

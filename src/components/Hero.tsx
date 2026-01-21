@@ -157,7 +157,7 @@ export default function ScrollytellingHero() {
   }, []);
 
   return (
-    <div className="relative bg-[#050505] text-white">
+    <div className="relative bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300">
       {/* 1. Fixed Background Layer (3D) */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Canvas shadows gl={{ antialias: true }}>
@@ -174,13 +174,13 @@ export default function ScrollytellingHero() {
 
       {/* 2. Fixed HUD Layer (Progress Indicator) */}
       <div className="fixed left-6 md:left-10 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-6 items-center mix-blend-difference">
-        <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest rotate-180 [writing-mode:vertical-lr]">
+        <span className="text-[8px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest rotate-180 [writing-mode:vertical-lr]">
           System_Build_Status
         </span>
         {[0, 1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className={`w-px transition-all duration-700 ${activeStep === i ? "h-8 bg-blue-400" : "h-4 bg-white/10"
+            className={`w-px transition-all duration-700 ${activeStep === i ? "h-8 bg-blue-600 dark:bg-blue-400" : "h-4 bg-gray-400 dark:bg-white/10"
               }`}
           />
         ))}
@@ -197,11 +197,11 @@ export default function ScrollytellingHero() {
               Ignition Sequence Initiated
             </span>
           </div>
-          <h1 className="text-7xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
+          <h1 className="text-7xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase text-gray-900 dark:text-white">
             Engineering <br />
-            <span className="text-white/20">The Engine</span>
+            <span className="text-gray-400 dark:text-white/20">The Engine</span>
           </h1>
-          <p className="text-white/40 font-light text-lg md:text-xl max-w-lg leading-relaxed">
+          <p className="text-gray-600 dark:text-white/40 font-light text-lg md:text-xl max-w-lg leading-relaxed">
             I architect the skeletons and forge the neural combustion chambers
             where I transforms data into intelligence. I build the systems that
             drive the future.
@@ -216,7 +216,7 @@ export default function ScrollytellingHero() {
 
       {/* SECTION 1: INFRASTRUCTURE (The Chassis) */}
       <section className="relative h-screen flex items-center justify-start px-10 md:px-32 z-10">
-        <div className="max-w-xl space-y-8 bg-black/40 backdrop-blur-xl p-10 rounded-3xl border border-white/5 shadow-2xl">
+        <div className="max-w-xl space-y-8 bg-white/60 dark:bg-black/40 backdrop-blur-xl p-10 rounded-3xl border border-gray-200 dark:border-white/5 shadow-2xl">
           <div className="space-y-2">
             <span className="text-blue-500 font-mono text-[10px] uppercase tracking-widest">
               Layer 01: The Chassis
@@ -226,13 +226,13 @@ export default function ScrollytellingHero() {
               Foundations
             </h2>
           </div>
-          <div className="space-y-4 text-white/60 font-light leading-relaxed text-sm md:text-base">
+          <div className="space-y-4 text-gray-700 dark:text-white/60 font-light leading-relaxed text-sm md:text-base">
             <p>
               Every engine needs a frame capable of sustaining high-velocity
               throughput. I design robust backends and automated pipelines that
               act as the structural steel for scalable AI applications.
             </p>
-            <div className="grid grid-cols-2 gap-y-3 font-mono text-[10px] uppercase tracking-widest text-blue-400/80 pt-4">
+            <div className="grid grid-cols-2 gap-y-3 font-mono text-[10px] uppercase tracking-widest text-blue-600/80 dark:text-blue-400/80 pt-4">
               <span className="flex items-center gap-2">
                 <div className="w-1 h-1 bg-blue-500 rounded-full" />{" "}
                 Load-Bearing APIs
@@ -267,7 +267,7 @@ export default function ScrollytellingHero() {
             </h2>
             <div className="h-1 w-24 bg-blue-600 ml-auto mt-4" />
           </div>
-          <p className="text-white/40 text-lg leading-relaxed font-light">
+          <p className="text-gray-600 dark:text-white/40 text-lg leading-relaxed font-light">
             This is where raw compute becomes cognitive energy. I fine-tune LLM
             integrations and vector logic to ensure the machine doesn't just
             run—it thinks, reacts, and adapts in real-time.
@@ -300,7 +300,7 @@ export default function ScrollytellingHero() {
       {/* SECTION 3: DEPLOYMENT (The Velocity) */}
       <section className="relative h-screen flex items-center justify-center z-10 px-10">
         <div className="text-center space-y-8 max-w-2xl">
-          <div className="inline-block px-4 py-1 border border-blue-500/30 rounded-full text-[10px] font-mono text-blue-400 uppercase tracking-[0.3em] mb-4">
+          <div className="inline-block px-4 py-1 border border-blue-500/30 rounded-full text-[10px] font-mono text-blue-600 dark:text-blue-400 uppercase tracking-[0.3em] mb-4">
             Full Throttle Reached
           </div>
           <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
@@ -309,7 +309,7 @@ export default function ScrollytellingHero() {
               Autonomy
             </span>
           </h2>
-          <p className="text-white/50 font-light text-lg leading-relaxed">
+          <p className="text-gray-600 dark:text-white/50 font-light text-lg leading-relaxed">
             The build is complete. I deliver fully autonomous systems that
             operate with the precision of a high-performance machine, ready to
             take the wheel of complex enterprise challenges.

@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTheme } from "../hooks/useTheme";
 import { useGithubContributions } from "../hooks/useGithubContributions";
 
 const GitHubContributions = () => {
+  const { theme } = useTheme();
   const { data, loading } = useGithubContributions("iNoumanMalik");
   const [tooltip, setTooltip] = useState<{
     visible: boolean;
@@ -22,7 +24,7 @@ const GitHubContributions = () => {
     return (
       <section id="github" className="section">
         <div className="container">
-        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
             Github{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
               Contributions
@@ -54,7 +56,7 @@ const GitHubContributions = () => {
         const month = date.getMonth();
         const monthKey = `${date.getFullYear()}-${month}`;
         const monthName = date.toLocaleDateString("en-US", { month: "short" });
-        
+
         // Skip December from previous year (month 11) if it appears at the start
         // Only show months starting from January (month 0) or if we've already seen January
         if (!seenMonths.has(monthKey) && weekIndex < weeks.length - 2) {
@@ -81,7 +83,7 @@ const GitHubContributions = () => {
       day: "numeric",
       year: "numeric",
     });
-    
+
     setTooltip({
       visible: true,
       x: rect.left + rect.width / 2,
@@ -96,19 +98,19 @@ const GitHubContributions = () => {
   };
 
   return (
-    <section id="github" className="section bg-[#050505]">
+    <section id="github" className="section bg-gray-100 dark:bg-[#050505] transition-colors duration-300 py-20">
       <div className="max-w-[1200px] mx-auto px-[20px] w-full box-border">
-      <h2 className="text-center text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8">
-            Github{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-200 to-green-500 ">
-              Contributions
-            </span>
-          </h2>
+        <h2 className="text-center text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8 text-gray-900 dark:text-white">
+          Github{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-800 dark:from-green-200 dark:to-green-500 ">
+            Contributions
+          </span>
+        </h2>
 
-        <div className="github-card rounded-lg p-8 border border-green-500/30 shadow-lg shadow-green-500/20">
+        <div className="github-card bg-white dark:bg-black rounded-lg p-8 border border-green-500/20 dark:border-green-500/30 shadow-xl dark:shadow-green-500/20">
           <div className="flex gap-3 justify-center">
             {/* Day labels */}
-            <div className="flex flex-col justify-between text-xs opacity-60 pt-5">
+            <div className="flex flex-col justify-between text-xs text-gray-400 dark:opacity-60 pt-5">
               <span>Mon</span>
               <span>Wed</span>
               <span>Fri</span>
@@ -117,7 +119,7 @@ const GitHubContributions = () => {
             {/* Contribution graph */}
             <div className="overflow-x-auto">
               {/* Month labels */}
-              <div className="relative text-xs opacity-60 mb-1 h-4">
+              <div className="relative text-xs text-gray-400 dark:opacity-60 mb-1 h-4">
                 {monthLabels.map(({ month, weekIndex }) => (
                   <span
                     key={`${month}-${weekIndex}`}
@@ -134,7 +136,6 @@ const GitHubContributions = () => {
                 {weeks.map((week, weekIndex) => (
                   <div key={weekIndex} className="flex flex-col gap-[3px]">
                     {week.contributionDays.map((day, dayIndex) => {
-
                       return (
                         <motion.div
                           key={day.date}
@@ -146,7 +147,7 @@ const GitHubContributions = () => {
                           onMouseLeave={handleMouseLeave}
                           className="w-[12px] h-[12px] rounded-sm cursor-pointer"
                           style={{
-                            backgroundColor: day.color || "#161b22",
+                            backgroundColor: day.contributionCount === 0 ? (theme === 'dark' ? "#161b22" : "#ebedf0") : day.color,
                           }}
                         />
                       );
@@ -158,7 +159,7 @@ const GitHubContributions = () => {
           </div>
 
           {/* Footer */}
-          <p className="contributions-text mt-4 text-center">
+          <p className="contributions-text mt-4 text-center text-gray-500 dark:text-gray-400">
             {totalContributions.toLocaleString()} contributions in the last year
           </p>
         </div>

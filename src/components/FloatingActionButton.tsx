@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTheme } from "../hooks/useTheme";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Plus, Mail, Moon, Sun, FileText } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
@@ -13,16 +14,10 @@ interface ActionButton {
 const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  // Default to dark mode for now, since we need to toggle
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { theme, toggleTheme } = useTheme();
+  const isDarkMode = theme === "dark";
   const containerRef = useRef<HTMLDivElement>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
-
-  // Toggle Dark Mode (placeholder logic)
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
 
   // Check for mobile viewport
   useEffect(() => {
@@ -159,8 +154,8 @@ const FloatingActionButton = () => {
     <div
       ref={containerRef}
       className="fixed bottom-8 right-8 z-50 flex flex-col items-end pointer-events-none"
-      // pointer-events-none on container to let clicks pass through empty spaces,
-      // but we need pointer-events-auto on buttons
+    // pointer-events-none on container to let clicks pass through empty spaces,
+    // but we need pointer-events-auto on buttons
     >
       <div className="relative pointer-events-auto">
         <AnimatePresence>
@@ -182,8 +177,11 @@ const FloatingActionButton = () => {
 
                   {/* Action Button */}
                   <button
-                    onClick={action.onClick}
-                    className={` text-white p-3 rounded-full shadow-lg hover:brightness-110 active:scale-95 transition-transform md:w-12 md:h-12 w-14 h-14 flex items-center justify-center`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      action.onClick();
+                    }}
+                    className={`bg-gray-900 dark:bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 dark:hover:bg-blue-500 active:scale-95 transition-all md:w-12 md:h-12 w-14 h-14 flex items-center justify-center border border-white/10`}
                     aria-label={action.label}
                   >
                     {action.icon}

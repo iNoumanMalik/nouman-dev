@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { Zap,  Cloud, Database, Server,  Brain } from "lucide-react";
+import { Zap, Cloud, Database, Server, Brain } from "lucide-react";
 
 // --- Data Structure ---
 const stackData = [
@@ -105,7 +105,7 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
 
   return (
     <motion.div
-      className={`group relative rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 overflow-hidden ${item.className}`}
+      className={`group relative rounded-3xl bg-white/60 dark:bg-black/40 backdrop-blur-xl border border-gray-200 dark:border-white/10 overflow-hidden ${item.className}`}
       onMouseMove={handleMouseMove}
       // onMouseEnter={() => setIsHovered(true)}
       // onMouseLeave={() => setIsHovered(false)}
@@ -141,11 +141,11 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-white mb-3 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/70 transition-colors">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/70 transition-colors">
           {item.title}
         </h3>
 
-        <p className="text-white/50 text-sm leading-relaxed mb-6 max-w-sm">
+        <p className="text-gray-600 dark:text-white/50 text-sm leading-relaxed mb-6 max-w-sm">
           {item.description}
         </p>
 
@@ -189,7 +189,7 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
 // --- Main Layout ---
 const BentoTechStack = () => {
   return (
-    <section id="tech" className="relative py-32 bg-black px-6 overflow-hidden">
+    <section id="tech" className="relative py-32 bg-gray-50 dark:bg-black px-6 overflow-hidden transition-colors duration-300">
 
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
@@ -202,9 +202,9 @@ const BentoTechStack = () => {
             <span className="text-blue-500 font-mono text-xs uppercase tracking-[0.3em] mb-4 block">
               System Architecture
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-[0.9]">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-[0.9]">
               Engineering <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">Arsenal</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-600">Arsenal</span>
             </h2>
           </div>
           <div className="hidden md:flex items-center gap-4 text-xs font-mono text-white/30 uppercase tracking-widest">

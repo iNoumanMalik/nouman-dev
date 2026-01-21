@@ -8,13 +8,27 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Light mode defaults */
+  color: #213547;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode handling happens via 'dark' class on HTML, but we can respect system pref too */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  }
+}
+
+:root.dark {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #000000; /* Deep black for that premium feel in dark mode */
 }
 
 
