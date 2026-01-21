@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../context/ThemeContext";
 import { useGithubContributions } from "../hooks/useGithubContributions";
 
 const GitHubContributions = () => {

@@ -95,7 +95,7 @@ export default function Experience() {
   };
 
   return (
-    <section className="relative w-full min-h-screen bg-gray-50 dark:bg-black text-gray-900 dark:text-white py-32 px-6 overflow-hidden transition-colors duration-300">
+    <section className="relative w-full min-h-screen bg-transparent text-gray-900 dark:text-white py-32 px-6 overflow-hidden transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
         <header className="mb-20">
           <h2 className="text-4xl font-bold tracking-tighter mb-4 uppercase text-gray-900 dark:text-white">Experience</h2>

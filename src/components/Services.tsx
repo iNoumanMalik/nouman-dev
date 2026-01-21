@@ -152,7 +152,7 @@ const Services = () => {
   return (
     <div
       ref={componentRef}
-      className="relative bg-gray-50 dark:bg-black text-gray-900 dark:text-white overflow-hidden transition-colors duration-300"
+      className="relative bg-transparent text-gray-900 dark:text-white overflow-hidden transition-colors duration-300"
     >
       {/* Desktop: Pinned Height Container / Mobile: Auto Height */}
       <div className="h-screen flex flex-col px-6 md:px-0 py-20 md:py-0">

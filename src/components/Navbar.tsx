@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../context/ThemeContext";
 import logo from "../assets/layers-ic.png";
 
 const handleLogoClick = () => {
@@ -8,7 +8,7 @@ const handleLogoClick = () => {
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  // const { theme, toggleTheme } = useTheme(); // Assuming useTheme provides theme and toggleTheme
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {

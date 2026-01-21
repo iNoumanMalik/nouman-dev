@@ -157,7 +157,7 @@ export default function ScrollytellingHero() {
   }, []);
 
   return (
-    <div className="relative bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300">
+    <div className="relative bg-transparent text-gray-900 dark:text-white transition-colors duration-300">
       {/* 1. Fixed Background Layer (3D) */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Canvas shadows gl={{ antialias: true }}>
@@ -174,13 +174,13 @@ export default function ScrollytellingHero() {
 
       {/* 2. Fixed HUD Layer (Progress Indicator) */}
       <div className="fixed left-6 md:left-10 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-6 items-center mix-blend-difference">
-        <span className="text-[8px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest rotate-180 [writing-mode:vertical-lr]">
+        <span className="text-[8px] font-mono text-white/40 uppercase tracking-widest rotate-180 [writing-mode:vertical-lr]">
           System_Build_Status
         </span>
         {[0, 1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className={`w-px transition-all duration-700 ${activeStep === i ? "h-8 bg-blue-600 dark:bg-blue-400" : "h-4 bg-gray-400 dark:bg-white/10"
+            className={`w-px transition-all duration-700 ${activeStep === i ? "h-8 bg-blue-500" : "h-4 bg-white/20"
               }`}
           />
         ))}
@@ -190,25 +190,25 @@ export default function ScrollytellingHero() {
 
       {/* SECTION 0: HERO / INITIALIZATION */}
       <section className="relative h-screen flex items-center px-10 md:px-32 z-10">
-        <div className="max-w-4xl space-y-6">
+        <div className="max-w-4xl space-y-6 text-gray-900 dark:text-white">
           <div className="flex items-center gap-3">
             <span className="w-8 h-px bg-blue-500" />
-            <span className="text-blue-400 font-mono text-xs uppercase tracking-[0.5em]">
+            <span className="text-blue-600 dark:text-blue-400 font-mono text-xs uppercase tracking-[0.5em]">
               Ignition Sequence Initiated
             </span>
           </div>
-          <h1 className="text-7xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase text-gray-900 dark:text-white">
+          <h1 className="text-7xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
             Engineering <br />
             <span className="text-gray-400 dark:text-white/20">The Engine</span>
           </h1>
-          <p className="text-gray-600 dark:text-white/40 font-light text-lg md:text-xl max-w-lg leading-relaxed">
+          <p className="text-gray-600 dark:text-white/50 font-light text-lg md:text-xl max-w-lg leading-relaxed">
             I architect the skeletons and forge the neural combustion chambers
             where I transforms data into intelligence. I build the systems that
             drive the future.
           </p>
-          <div className="pt-4 flex items-center gap-4 text-[10px] font-mono text-white/20 uppercase tracking-widest">
+          <div className="pt-4 flex items-center gap-4 text-[10px] font-mono text-gray-400 dark:text-white/20 uppercase tracking-widest">
             <span>Engage Propulsion</span>
-            <div className="w-12 h-px bg-white/10" />
+            <div className="w-12 h-px bg-gray-200 dark:bg-white/10" />
             <span>Step 01 // Structural_Chassis</span>
           </div>
         </div>
@@ -267,12 +267,12 @@ export default function ScrollytellingHero() {
             </h2>
             <div className="h-1 w-24 bg-blue-600 ml-auto mt-4" />
           </div>
-          <p className="text-gray-600 dark:text-white/40 text-lg leading-relaxed font-light">
+          <p className="text-gray-600 dark:text-white/50 text-lg leading-relaxed font-light">
             This is where raw compute becomes cognitive energy. I fine-tune LLM
             integrations and vector logic to ensure the machine doesn't just
             run—it thinks, reacts, and adapts in real-time.
           </p>
-          <p className="text-white/20 text-sm italic pr-6 border-r border-blue-500/30">
+          <p className="text-gray-400 dark:text-white/20 text-sm italic pr-6 border-r border-blue-500/30">
             "An engine is only as powerful as its ability to convert complexity
             into motion."
           </p>
@@ -315,7 +315,7 @@ export default function ScrollytellingHero() {
             take the wheel of complex enterprise challenges.
           </p>
           <div className="pt-12 flex flex-col items-center gap-4">
-            <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.4em]">
+            <span className="text-[10px] font-mono text-gray-400 dark:text-white/20 uppercase tracking-[0.4em]">
               Initialize Next Module
             </span>
             <div className="w-px h-20 bg-linear-to-b from-blue-500 via-blue-500 to-transparent mx-auto animate-bounce" />
