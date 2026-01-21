@@ -110,11 +110,14 @@ const GitHubContributions = () => {
         <div className="github-card bg-white dark:bg-black rounded-lg p-8 border border-green-500/20 dark:border-green-500/30 shadow-xl dark:shadow-green-500/20">
           <div className="flex gap-3 justify-center">
             {/* Day labels */}
-            <div className="flex flex-col justify-between text-xs text-gray-400 dark:opacity-60 pt-5">
+            {data ?
+              <div className="flex flex-col justify-between text-xs text-gray-400 dark:opacity-60 pt-5">
               <span>Mon</span>
               <span>Wed</span>
               <span>Fri</span>
-            </div>
+            </div>: ""
+            }
+            
 
             {/* Contribution graph */}
             <div className="overflow-x-auto">
