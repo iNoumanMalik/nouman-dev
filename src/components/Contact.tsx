@@ -46,7 +46,7 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch(formspreeUrl, {
         method: "POST",
@@ -60,7 +60,7 @@ export default function ContactSection() {
           message: formState.message
         })
       });
-  
+
       if (response.ok) {
         if (window.gsap) {
           window.gsap.to(".contact-window", {
@@ -81,12 +81,13 @@ export default function ContactSection() {
       console.error(err);
     }
   };
-  
+
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen  text-white py-24 px-6 overflow-hidden flex flex-col items-center justify-center"
+      id="contact"
+      className="relative w-full min-h-screen text-gray-900 dark:text-white py-24 px-6 overflow-hidden flex flex-col items-center justify-center bg-transparent transition-colors duration-300"
     >
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -133,15 +134,15 @@ export default function ContactSection() {
               </div>
 
               {/* Main Macbook-style Window */}
-              <div className="contact-window bg-[#0A0A0A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+              <div className="contact-window bg-white dark:bg-[#0A0A0A] border border-gray-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden">
                 {/* Macbook Header */}
-                <div className="flex items-center justify-between px-5 py-4 border-b border-white/5 bg-white/[0.02]">
+                <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/[0.02]">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-black/10" />
                     <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-black/10" />
                     <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-black/10" />
                   </div>
-                  <span className="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em]">
+                  <span className="text-[10px] font-mono text-gray-400 dark:text-white/20 uppercase tracking-[0.2em]">
                     secure_message_v2.sh
                   </span>
                   <div className="w-12" /> {/* Spacer for symmetry */}
@@ -151,7 +152,7 @@ export default function ContactSection() {
                 <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-mono text-white/30 uppercase tracking-widest ml-1">
+                      <label className="text-[10px] font-mono text-gray-500 dark:text-white/30 uppercase tracking-widest ml-1">
                         Identity
                       </label>
                       <input
@@ -162,11 +163,11 @@ export default function ContactSection() {
                           setFormState({ ...formState, name: e.target.value })
                         }
                         placeholder="Your Name"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all placeholder:text-white/10"
+                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all placeholder:text-gray-400 dark:placeholder:text-white/10 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-mono text-white/30 uppercase tracking-widest ml-1">
+                      <label className="text-[10px] font-mono text-gray-500 dark:text-white/30 uppercase tracking-widest ml-1">
                         Endpoint
                       </label>
                       <input
@@ -177,13 +178,13 @@ export default function ContactSection() {
                           setFormState({ ...formState, email: e.target.value })
                         }
                         placeholder="Email Address"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all placeholder:text-white/10"
+                        className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all placeholder:text-gray-400 dark:placeholder:text-white/10 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-mono text-white/30 uppercase tracking-widest ml-1">
+                    <label className="text-[10px] font-mono text-gray-500 dark:text-white/30 uppercase tracking-widest ml-1">
                       Payload
                     </label>
                     <textarea
@@ -194,13 +195,13 @@ export default function ContactSection() {
                         setFormState({ ...formState, message: e.target.value })
                       }
                       placeholder="Tell me about your project..."
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all placeholder:text-white/10 resize-none"
+                      className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all placeholder:text-gray-400 dark:placeholder:text-white/10 resize-none text-gray-900 dark:text-white"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-blue-400 hover:text-white transition-all active:scale-[0.98] flex items-center justify-center gap-3"
+                    className="w-full py-5 bg-gray-900 dark:bg-white text-white dark:text-black font-black uppercase tracking-[0.2em] text-[10px] rounded-xl hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition-all active:scale-[0.98] flex items-center justify-center gap-3"
                   >
                     Execute Transmission
                     {/* <span className="text-base">⚡</span> */}
@@ -210,9 +211,9 @@ export default function ContactSection() {
             </div>
 
             {/* Structured Footer Links (LinkedIn, GitHub, Location, Direct) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-white/5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-gray-200 dark:border-white/5">
               <div className="space-y-3">
-                <h4 className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+                <h4 className="text-[10px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest">
                   Social
                 </h4>
                 <div className="flex flex-col gap-2">
@@ -236,10 +237,10 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-3">
-                <h4 className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+                <h4 className="text-[10px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest">
                   Location
                 </h4>
-                <p className="text-sm text-white/60 leading-relaxed">
+                <p className="text-sm text-gray-600 dark:text-white/60 leading-relaxed">
                   Islamabad, Pakistan
                   <br />
                   <span className="text-[10px] opacity-50 uppercase tracking-tighter">
@@ -249,17 +250,17 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-3">
-                <h4 className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+                <h4 className="text-[10px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest">
                   Direct
                 </h4>
-                <p className="text-sm text-white/60">
+                <p className="text-sm text-gray-600 dark:text-white/60">
                   inoumanmalik@outlook.com
                 </p>
-                <p className="text-sm text-white/60">+92 314 4221693</p>
+                <p className="text-sm text-gray-600 dark:text-white/60">+92 314 4221693</p>
               </div>
 
               <div className="space-y-3">
-                <h4 className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+                <h4 className="text-[10px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest">
                   Availability
                 </h4>
                 <p className="text-sm text-emerald-400/80 flex items-center gap-2">
@@ -278,13 +279,13 @@ export default function ContactSection() {
             <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">
               Transmission Successful
             </h3>
-            <p className="text-white/40 max-w-sm font-light italic">
+            <p className="text-gray-500 dark:text-white/40 max-w-sm font-light italic">
               Your message has been routed. Expect a response in your inbox
               within 24 hours.
             </p>
             <button
               onClick={() => setIsSent(false)}
-              className="mt-12 text-[10px] font-mono text-white/20 uppercase tracking-widest hover:text-white transition-colors border border-white/10 px-6 py-2 rounded-full hover:bg-white/5"
+              className="mt-12 text-[10px] font-mono text-gray-400 dark:text-white/20 uppercase tracking-widest hover:text-gray-900 dark:hover:text-white transition-colors border border-gray-200 dark:border-white/10 px-6 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5"
             >
               New Transmission
             </button>

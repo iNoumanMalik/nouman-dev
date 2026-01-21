@@ -152,7 +152,8 @@ const Services = () => {
   return (
     <div
       ref={componentRef}
-      className="relative bg-black text-white overflow-hidden"
+      id="services"
+      className="relative bg-transparent text-gray-900 dark:text-white overflow-hidden transition-colors duration-300"
     >
       {/* Desktop: Pinned Height Container / Mobile: Auto Height */}
       <div className="h-screen flex flex-col px-6 md:px-0 py-20 md:py-0">
@@ -165,13 +166,13 @@ const Services = () => {
             <span className="text-blue-500 font-mono text-xs uppercase tracking-[0.3em] block mb-2">
               Services
             </span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-gray-900 dark:text-white">
               What I{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">
                 Deliver
               </span>
             </h2>
-            <p className="mt-4 text-white/40 text-sm font-mono md:hidden">
+            <p className="mt-4 text-gray-400 dark:text-white/40 text-sm font-mono md:hidden">
               Swipe to explore →
             </p>
           </div>
@@ -203,8 +204,8 @@ const Services = () => {
                                         flex flex-col justify-between 
                                         border transition-all duration-500 group
                                         ${isActive
-                          ? "bg-[#111] border-white/20 shadow-2xl scale-100 opacity-100"
-                          : "bg-[#050505] border-white/5 opacity-50 scale-95 blur-[2px]"
+                          ? "bg-white dark:bg-[#111] border-gray-200 dark:border-white/20 shadow-2xl scale-100 opacity-100"
+                          : "bg-gray-100 dark:bg-[#050505] border-gray-200 dark:border-white/5 opacity-50 scale-95 blur-[2px]"
                         }
                                     `}
                     >
@@ -218,7 +219,7 @@ const Services = () => {
                       {/* Icon */}
                       <div className="relative z-10">
                         <div
-                          className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 ${isActive ? "text-white" : "text-white/30"}`}
+                          className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 ${isActive ? "text-blue-600 dark:text-white" : "text-gray-400 dark:text-white/30"}`}
                         >
                           {/* Just a generic icon for category if specific one not passed, but we'll use first service icon maybe? or just hardcode */}
                           {index === 0 && <Code size={28} />}
@@ -233,13 +234,13 @@ const Services = () => {
                         <h3 className="text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2">
                           {category.title}
                         </h3>
-                        <p className="font-mono text-sm tracking-widest text-white/50 uppercase">
+                        <p className="font-mono text-sm tracking-widest text-gray-500 dark:text-white/50 uppercase">
                           {category.tagline}
                         </p>
                       </div>
 
                       {/* Mobile Indicator */}
-                      <div className="md:hidden absolute bottom-6 right-6 text-white/20">
+                      <div className="md:hidden absolute bottom-6 right-6 text-gray-200 dark:text-white/20">
                         0{index + 1}
                       </div>
                     </motion.div>
@@ -265,13 +266,13 @@ const Services = () => {
                 {activeCategory.services.map((service, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors"
+                    className="flex items-start gap-3 p-4 rounded-xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/5 hover:bg-gray-50 dark:hover:bg-white/10 transition-colors shadow-sm dark:shadow-none"
                   >
-                    <div className="mt-1 text-white/40">
+                    <div className="mt-1 text-gray-500 dark:text-white/40">
                       <service.icon size={18} />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white mb-1 leading-tight">
+                      <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-1 leading-tight">
                         {service.title}
                       </h4>
                     </div>
@@ -281,7 +282,7 @@ const Services = () => {
             </AnimatePresence>
 
             {/* Progress Bar (Desktop) */}
-            <div className="hidden md:block absolute bottom-0 left-12 right-12 h-1 bg-white/5 rounded-full mt-12">
+            <div className="hidden md:block absolute bottom-0 left-12 right-12 h-1 bg-gray-200 dark:bg-white/5 rounded-full mt-12">
               <motion.div
                 className="h-full bg-blue-500 rounded-full"
                 animate={{

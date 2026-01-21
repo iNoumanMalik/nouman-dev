@@ -289,15 +289,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
 function Projects() {
   return (
-    <section className="relative w-full bg-black py-24">
+    <section id="projects" className="relative w-full bg-transparent py-24 transition-colors duration-300">
       <div className="w-full max-w-4xl mx-auto px-6 mb-20 text-center">
-        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-2 ">
+        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-2 text-gray-900 dark:text-white">
           Live{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 ">
             Projects
           </span>
         </h2>
-        <p className="text-white/40 font-mono">SCROLL TO EXPLORE ARCHIVE</p>
+        <p className="text-gray-500 dark:text-white/40 font-mono">SCROLL TO EXPLORE ARCHIVE</p>
       </div>
 
       <div className="relative space-y-24 pb-48">
