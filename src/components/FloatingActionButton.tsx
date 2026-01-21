@@ -181,7 +181,7 @@ const FloatingActionButton = () => {
                       e.stopPropagation();
                       action.onClick();
                     }}
-                    className={`bg-gray-900 dark:bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 dark:hover:bg-blue-500 active:scale-95 transition-all md:w-12 md:h-12 w-14 h-14 flex items-center justify-center border border-white/10`}
+                    className={`text-black dark:text-white p-3 rounded-full shadow-lg  active:scale-95 transition-all md:w-12 md:h-12 w-14 h-14 flex items-center justify-center`}
                     aria-label={action.label}
                   >
                     {action.icon}
@@ -194,7 +194,7 @@ const FloatingActionButton = () => {
         {/* Main Toggle Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative z-10 bg-white/1 backdrop-blur-xl border border-white/10 hover:border-white/15 text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer md:w-12 md:h-12 w-12 h-12"
+          className="relative z-10 shadow-lg dark:bg-white/1 backdrop-blur-xl border border-white/10 hover:border-white/15 text-black dark:text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer md:w-12 md:h-12 w-12 h-12"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           animate={{ rotate: isOpen ? 45 : 0 }}
