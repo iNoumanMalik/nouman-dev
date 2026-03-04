@@ -1,3 +1,5 @@
+ // Vercel automatically runs this serverless function but we don't see contributions in localhost. So instead of run dev use vercel dev
+
 export const config = {
     runtime: 'edge',
 };
@@ -67,3 +69,36 @@ export default async function handler() {
         });
     }
 }
+
+
+
+/* 
+A serverless function is:
+A backend function that runs on-demand without you managing a server.
+You write a function.
+The platform (like Vercel) runs it when needed.
+
+You don’t:
+Create a server
+Open a port
+Run app.listen()
+Manage infrastructure 
+
+Instead of this:
+app.listen(5001)
+
+You just write:
+export default async function handler(req, res) {
+return new Response("Hello");
+}
+
+And the platform handles the rest.
+
+
+Vercel:
+
+Creates server
+Runs function when request comes
+Scales automatically
+Stops it when not used
+*/
