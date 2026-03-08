@@ -26,24 +26,24 @@ function useInView(threshold = 0.15) {
 /* ─── Timeline data ─── */
 const timeline = [
   {
-    year: "2019",
-    label: "Curiosity",
-    desc: "Started exploring web development — HTML, CSS, the basics of how the internet is built.",
+    year: "Jan 2025 - Present",
+    label: "Software Engineer",
+    desc: "Software Engineer at Computerized AI — Building full-stack systems that integrate AI and automation workflows.",
   },
   {
-    year: "2021",
-    label: "Development",
-    desc: "Built first full-stack applications. Learned JavaScript deeply and fell in love with React.",
+    year: "Jan 2026 - Mar 2026",
+    label: "GenAI Backend Intern",
+    desc: "GenAI Backend Intern at Emumba — Built RAG pipelines, embedding generation systems, and production AI integrations.",
   },
   {
-    year: "2023",
-    label: "Systems Thinking",
-    desc: "Shifted focus to performance, architecture, and building things that scale with intention.",
+    year: "Project Based (2025)",
+    label: "Frontend Developer",
+    desc: "Worked closely with Client to design and develop multiple websites tailored to different business domains, focusing on clean UI, responsiveness, and real-world usability",
   },
   {
-    year: "2024",
-    label: "AI Integration",
-    desc: "Exploring intelligent interfaces and automation — where engineering meets emerging intelligence.",
+    year: "Earlier",
+    label: "The Start",
+    desc: "Explored web, mobile, and backend development, discovering a deep interest in AI systems.",
   },
 ];
 
@@ -268,17 +268,18 @@ const About = () => {
               <span className="ab-accent-text">Architect</span>
             </h1>
             <p className="ab-hero-sub">
-              Software Engineer focused on building intelligent,
+              I build scalable applications and AI-powered systems
               <br />
-              high-performance web systems.
+              that span web, mobile, backend, and automation.
             </p>
             <p className="ab-hero-body">
-              I design and build modern web applications where performance,
-              clarity, and intelligent automation meet.
+              I specialize in integrating modern tech like React, Flutter,
+              Python (FASTApi), and NestJS, focusing on clean code and
+              maintainable architecture.
             </p>
             <p className="ab-hero-body">
-              My focus lies at the intersection of frontend engineering,
-              scalable systems, and emerging AI technologies.
+              Turning complex problems into reliable, production-ready software
+              is what drives me every day.
             </p>
             <div className="ab-hero-line" />
           </div>
@@ -295,17 +296,54 @@ const About = () => {
         <div className="ab-story-grid">
           <div className="ab-story-text">
             <p>
-              My journey into software started with curiosity about how
-              digital systems actually work.
+              I’ve been fascinated by <strong>computers and technology</strong>{" "}
+              since childhood. Growing up with a brother who was a software
+              engineer, I had early exposure to{" "}
+              <strong>computer science</strong>, which sparked my curiosity
+              about how software works.
             </p>
             <p>
-              What began as simple frontend experiments quickly evolved into
-              building full applications and exploring how intelligent systems
-              can enhance human workflows.
+              In college, I first interacted with{" "}
+              <strong>coding through C++</strong>, and honestly, it was a
+              challenging experience — I struggled to understand the logic and
+              felt frustrated at times. But my passion didn’t fade. I switched
+              to a <strong>Software Engineering program</strong>, where I first
+              encountered <strong>ChatGPT</strong>, which became a personal
+              mentor. Through it, I could{" "}
+              <strong>
+                learn programming concepts, debug problems, and experiment with
+                projects
+              </strong>
+              , strengthening my foundation in multiple programming languages.
             </p>
             <p>
-              Today I focus on designing scalable interfaces and systems that
-              balance performance, clarity, and real-world usability.
+              As I built more confidence, I moved into{" "}
+              <strong>web development</strong>, mastering{" "}
+              <strong>frontend frameworks like React</strong>. In my second
+              year, I landed my first job as a{" "}
+              <strong>Frontend Developer</strong>, but I didn’t stop there.
+              Every day became an opportunity to learn new technologies:{" "}
+              <strong>
+                backend development, mobile development with Flutter, databases,
+                AI systems, and workflow automation
+              </strong>
+              .
+            </p>
+            <p>
+              Today, I work as a <strong>Software Engineer</strong> building{" "}
+              <strong>holistic, end-to-end systems</strong> that integrate{" "}
+              <strong>
+                web, mobile, backend, databases, AI pipelines, and automation
+                workflows
+              </strong>
+              . My approach balances{" "}
+              <strong>
+                performance, scalability, modularity, and real-world business
+                impact
+              </strong>
+              , and I continuously push myself to turn{" "}
+              <strong>ideas into production-ready applications</strong> that
+              solve real problems.
             </p>
           </div>
           <div className="ab-timeline">
@@ -375,8 +413,8 @@ const About = () => {
               they simply work, adapt, and scale naturally.
             </p>
             <p>
-              My goal is to design software that is not only functional but
-              also resilient, maintainable, and future-ready.
+              My goal is to design software that is not only functional but also
+              resilient, maintainable, and future-ready.
             </p>
           </div>
           <div className="ab-philos-bg-text" aria-hidden>
@@ -433,7 +471,7 @@ const About = () => {
           </h2>
           <p className="ab-cta-body">
             If you're working on an interesting project or need help building
-            intelligent web systems, I'd love to connect.
+            intelligent software systems, I'd love to connect.
           </p>
           <div className="ab-cta-btns">
             <a href="/#projects" className="ab-btn ab-btn--primary">
@@ -443,9 +481,15 @@ const About = () => {
               href="mailto:inoumanmalik@outlook.com"
               className="ab-btn ab-btn--ghost"
             >
-              Contact Me
+              Email Me
             </a>
           </div>
+          <p
+            className="ab-cta-body"
+            style={{ marginTop: "-1.5rem", opacity: 0.6, fontSize: "0.75rem" }}
+          >
+            Call: +92 314 4221693 | GitHub: iNoumanMalik
+          </p>
           <div className="ab-cta-decoration" aria-hidden>
             {"// let's work = () => greatThings();"}
           </div>
