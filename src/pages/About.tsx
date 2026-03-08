@@ -112,136 +112,12 @@ const About = () => {
             <div className="ab-avatar">
               <div className="ab-avatar-ring" />
               <div className="ab-avatar-inner">
-                <svg
-                  viewBox="0 0 120 120"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ab-avatar-svg"
-                >
-                  {/* Geometric architect avatar */}
-                  <circle
-                    cx="60"
-                    cy="40"
-                    r="22"
-                    stroke="var(--ab-accent)"
-                    strokeWidth="1.5"
-                    fill="none"
-                  />
-                  <circle
-                    cx="60"
-                    cy="40"
-                    r="14"
-                    fill="var(--ab-accent)"
-                    opacity="0.12"
-                  />
-                  <circle
-                    cx="60"
-                    cy="38"
-                    r="9"
-                    fill="var(--ab-fg)"
-                    opacity="0.9"
-                  />
-                  <ellipse
-                    cx="60"
-                    cy="90"
-                    rx="28"
-                    ry="18"
-                    stroke="var(--ab-accent)"
-                    strokeWidth="1.5"
-                    fill="none"
-                  />
-                  <ellipse
-                    cx="60"
-                    cy="90"
-                    rx="20"
-                    ry="12"
-                    fill="var(--ab-fg)"
-                    opacity="0.08"
-                  />
-                  <line
-                    x1="60"
-                    y1="62"
-                    x2="60"
-                    y2="72"
-                    stroke="var(--ab-fg)"
-                    strokeWidth="1.5"
-                  />
-                  <line
-                    x1="44"
-                    y1="75"
-                    x2="76"
-                    y2="75"
-                    stroke="var(--ab-accent)"
-                    strokeWidth="1"
-                  />
-                  {/* Circuit nodes */}
-                  <circle
-                    cx="20"
-                    cy="20"
-                    r="3"
-                    fill="var(--ab-accent)"
-                    opacity="0.4"
-                  />
-                  <circle
-                    cx="100"
-                    cy="20"
-                    r="3"
-                    fill="var(--ab-accent)"
-                    opacity="0.4"
-                  />
-                  <circle
-                    cx="20"
-                    cy="100"
-                    r="3"
-                    fill="var(--ab-accent)"
-                    opacity="0.25"
-                  />
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="3"
-                    fill="var(--ab-accent)"
-                    opacity="0.25"
-                  />
-                  <line
-                    x1="23"
-                    y1="20"
-                    x2="37"
-                    y2="20"
-                    stroke="var(--ab-accent)"
-                    strokeWidth="0.5"
-                    opacity="0.3"
-                  />
-                  <line
-                    x1="83"
-                    y1="20"
-                    x2="97"
-                    y2="20"
-                    stroke="var(--ab-accent)"
-                    strokeWidth="0.5"
-                    opacity="0.3"
-                  />
-                  <line
-                    x1="20"
-                    y1="23"
-                    x2="20"
-                    y2="37"
-                    stroke="var(--ab-accent)"
-                    strokeWidth="0.5"
-                    opacity="0.3"
-                  />
-                  <line
-                    x1="100"
-                    y1="23"
-                    x2="100"
-                    y2="37"
-                    stroke="var(--ab-accent)"
-                    strokeWidth="0.5"
-                    opacity="0.3"
-                  />
-                </svg>
+                <img
+                  src="/src/assets/me/profile.jpeg"
+                  alt="About me photo"
+                />
               </div>
-              <div className="ab-avatar-label">NM</div>
+              <div className="ab-avatar-label">N.</div>
             </div>
 
             {/* Stats */}
@@ -463,35 +339,35 @@ const About = () => {
         className={`ab-section ab-cta ${cta.visible ? "ab--in" : ""}`}
       >
         <div className="ab-cta-inner">
-          <div className="ab-section-label">06 — Connect</div>
-          <h2 className="ab-cta-heading">
-            Let's Build Something
-            <br />
-            <span className="ab-accent-text">Meaningful</span>
-          </h2>
-          <p className="ab-cta-body">
-            If you're working on an interesting project or need help building
-            intelligent software systems, I'd love to connect.
-          </p>
-          <div className="ab-cta-btns">
-            <a href="/#projects" className="ab-btn ab-btn--primary">
-              View Projects
-            </a>
-            <a
-              href="mailto:inoumanmalik@outlook.com"
-              className="ab-btn ab-btn--ghost"
-            >
-              Email Me
-            </a>
-          </div>
-          <p
-            className="ab-cta-body"
+            <div className="ab-section-label">06 — Connect</div>
+            <h2 className="ab-cta-heading">
+              Let's Build Something
+              <br />
+              <span className="ab-accent-text">Meaningful</span>
+            </h2>
+            <p className="ab-cta-body">
+              If you're working on an interesting project or need help building
+              intelligent software systems, I'd love to connect.
+            </p>
+            <div className="ab-cta-btns">
+              <a href="/#projects" className="ab-btn ab-btn--primary">
+                View Projects
+              </a>
+              <a
+                href="mailto:inoumanmalik@outlook.com"
+                className="ab-btn ab-btn--ghost"
+              >
+                Email Me
+              </a>
+            </div>
+            <p
+              className="ab-cta-body"
             style={{ marginTop: "-1.5rem", opacity: 0.6, fontSize: "0.75rem" }}
-          >
-            Call: +92 314 4221693 | GitHub: iNoumanMalik
-          </p>
-          <div className="ab-cta-decoration" aria-hidden>
-            {"// let's work = () => greatThings();"}
+            >
+              Call: +92 314 4221693 | GitHub: iNoumanMalik
+            </p>
+            <div className="ab-cta-decoration" aria-hidden>
+              {"// let's work = () => greatThings();"}
           </div>
         </div>
       </div>
