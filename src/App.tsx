@@ -10,6 +10,7 @@ import FloatingActionButton from "./components/FloatingActionButton";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,6 +46,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
