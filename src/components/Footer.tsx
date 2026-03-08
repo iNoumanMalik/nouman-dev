@@ -86,8 +86,8 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="#clients"
-                    onClick={(e) => handleComingSoon(e, "Clients")}
+                    href="#projects"
+                    // onClick={(e) => handleComingSoon(e, "Clients")}
                   >
                     Clients
                   </a>
@@ -112,8 +112,8 @@ const Footer = () => {
               <ul className="footer-links">
                 <li>
                   <a
-                    href="#about"
-                    onClick={(e) => handleComingSoon(e, "About")}
+                    href="/about"
+                    // onClick={(e) => handleComingSoon(e, "About")}
                   >
                     About
                   </a>
