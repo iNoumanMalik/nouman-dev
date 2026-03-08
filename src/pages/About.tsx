@@ -83,7 +83,7 @@ const outside = [
 const stats = [
   { value: "3+", label: "Years Coding" },
   { value: "20+", label: "Projects" },
-  { value: "FE + AI", label: "Focus" },
+  { value: "SE + AI", label: "Focus" },
   { value: "PK", label: "Pakistan" },
 ];
 
@@ -436,7 +436,7 @@ const About = () => {
             intelligent web systems, I'd love to connect.
           </p>
           <div className="ab-cta-btns">
-            <a href="#projects" className="ab-btn ab-btn--primary">
+            <a href="/#projects" className="ab-btn ab-btn--primary">
               View Projects
             </a>
             <a
