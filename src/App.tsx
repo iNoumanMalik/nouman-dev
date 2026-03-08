@@ -1,20 +1,15 @@
 import { useEffect, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./App.css"; // Global styles
+import "./App.css";
 
-// Import Components and Pages
 import Navbar from "./components/Navbar";
-import ScrollytellingHero from "./components/Hero";
-import TechStack from "./components/TechStack";
-import SkillsCloud from "./components/TechStackShowcase";
-import Services from "./components/Services";
-import Projects from "./components/Projects";
-import Experience from "./components/Experience";
-import GitHubContributions from "./components/GitHubContributions";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingActionButton from "./components/FloatingActionButton";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,9 +17,8 @@ function App() {
   const appRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Smooth scroll setup
-    // This logic remains here as it controls the animation for all sections on the page.
     const sections = document.querySelectorAll(".section");
+
     sections.forEach((section) => {
       gsap.fromTo(
         section,
@@ -38,9 +32,8 @@ function App() {
             start: "top 80%",
             end: "bottom 20%",
             toggleActions: "play none none reverse",
-            // You might add markers: true for debugging ScrollTrigger setup
           },
-        }
+        },
       );
     });
   }, []);
@@ -48,14 +41,12 @@ function App() {
   return (
     <div className="app" ref={appRef}>
       <Navbar />
-      <ScrollytellingHero />
-      <TechStack />
-      <SkillsCloud />
-      <Services />
-      <Projects />
-      <Experience />
-      <GitHubContributions />
-      <Contact />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+
       <Footer />
       <FloatingActionButton />
     </div>

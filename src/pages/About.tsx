@@ -1,15 +1,374 @@
+import { useEffect, useRef, useState } from "react";
+import "./About.css";
 
+/* ─── Intersection Observer hook ─── */
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
+}
+
+/* ─── Timeline data ─── */
+const timeline = [
+  {
+    year: "Jan 2025 - Present",
+    label: "Software Engineer",
+    desc: "Software Engineer at Computerized AI — Building full-stack systems that integrate AI and automation workflows.",
+  },
+  {
+    year: "Jan 2026 - Mar 2026",
+    label: "GenAI Backend Intern",
+    desc: "GenAI Backend Intern at Emumba — Built RAG pipelines, embedding generation systems, and production AI integrations.",
+  },
+  {
+    year: "Project Based (2025)",
+    label: "Frontend Developer",
+    desc: "Worked closely with Client to design and develop multiple websites tailored to different business domains, focusing on clean UI, responsiveness, and real-world usability",
+  },
+  {
+    year: "Earlier",
+    label: "The Start",
+    desc: "Explored web, mobile, and backend development, discovering a deep interest in AI systems.",
+  },
+];
+
+/* ─── Process cards ─── */
+const process = [
+  {
+    num: "01",
+    title: "Problem First",
+    body: "I start by understanding the real problem before choosing tools or frameworks.",
+  },
+  {
+    num: "02",
+    title: "Systems Thinking",
+    body: "I design software as interconnected systems rather than isolated components.",
+  },
+  {
+    num: "03",
+    title: "Performance Matters",
+    body: "Clean architecture and optimized rendering are core priorities in my work.",
+  },
+  {
+    num: "04",
+    title: "Continuous Learning",
+    body: "Technology evolves fast. I actively explore new tools and approaches to stay ahead.",
+  },
+];
+
+/* ─── Outside items ─── */
+const outside = [
+  { icon: "⚡", label: "Tech exploration" },
+  { icon: "🫆", label: "System design" },
+  { icon: "📚", label: "Reading" },
+  { icon: "🌍", label: "AI research" },
+];
+
+/* ─── Stats ─── */
+const stats = [
+  { value: "3+", label: "Years Coding" },
+  { value: "20+", label: "Projects" },
+  { value: "SE + AI", label: "Focus" },
+  { value: "PK", label: "Pakistan" },
+];
+
+/* ══════════════════════════════════════════════════ */
 const About = () => {
+  const hero = useInView(0.1);
+  const story = useInView(0.1);
+  const howI = useInView(0.1);
+  const philos = useInView(0.1);
+  const outside_ = useInView(0.1);
+  const cta = useInView(0.1);
+
   return (
-    <section id="about" className="section">
-      <div className="container">
-        <h2 className="section-title gradient-text">About Me</h2>
-        <div className="neon-card">
-          <p>
-            I'm a passionate full-stack developer with expertise in modern web
-            technologies. I love creating innovative solutions and bringing
-            ideas to life through code.
-          </p>
+    <section id="about" className="ab-root">
+      {/* ── Noise grain overlay ── */}
+      <div className="ab-grain" aria-hidden />
+
+      {/* ══ 1. HERO ══ */}
+      <div
+        ref={hero.ref}
+        className={`ab-section ab-hero ${hero.visible ? "ab--in" : ""}`}
+      >
+        <div className="ab-hero-grid">
+          {/* Avatar column */}
+          <div className="ab-avatar-wrap">
+            <div className="ab-avatar">
+              <div className="ab-avatar-ring" />
+              <div className="ab-avatar-inner">
+                <img
+                  src="/src/assets/me/profile.jpeg"
+                  alt="About me photo"
+                />
+              </div>
+              <div className="ab-avatar-label">N.</div>
+            </div>
+
+            {/* Stats */}
+            <div className="ab-stats">
+              {stats.map((s, i) => (
+                <div
+                  key={i}
+                  className="ab-stat"
+                  style={{ animationDelay: `${0.4 + i * 0.1}s` }}
+                >
+                  <span className="ab-stat-val">{s.value}</span>
+                  <span className="ab-stat-label">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Text column */}
+          <div className="ab-hero-text">
+            <p className="ab-eyebrow">// about</p>
+            <h1 className="ab-hero-heading">
+              About the
+              <br />
+              <span className="ab-accent-text">Architect</span>
+            </h1>
+            <p className="ab-hero-sub">
+              I build scalable applications and AI-powered systems
+              <br />
+              that span web, mobile, backend, and automation.
+            </p>
+            <p className="ab-hero-body">
+              I specialize in integrating modern tech like React, Flutter,
+              Python (FASTApi), and NestJS, focusing on clean code and
+              maintainable architecture.
+            </p>
+            <p className="ab-hero-body">
+              Turning complex problems into reliable, production-ready software
+              is what drives me every day.
+            </p>
+            <div className="ab-hero-line" />
+          </div>
+        </div>
+      </div>
+
+      {/* ══ 2. MY STORY ══ */}
+      <div
+        ref={story.ref}
+        className={`ab-section ab-story ${story.visible ? "ab--in" : ""}`}
+      >
+        <div className="ab-section-label">02 — Journey</div>
+        <h2 className="ab-section-heading">My Story</h2>
+        <div className="ab-story-grid">
+          <div className="ab-story-text">
+            <p>
+              I’ve been fascinated by <strong>computers and technology</strong>{" "}
+              since childhood. Growing up with a brother who was a software
+              engineer, I had early exposure to{" "}
+              <strong>computer science</strong>, which sparked my curiosity
+              about how software works.
+            </p>
+            <p>
+              In college, I first interacted with{" "}
+              <strong>coding through C++</strong>, and honestly, it was a
+              challenging experience — I struggled to understand the logic and
+              felt frustrated at times. But my passion didn’t fade. I switched
+              to a <strong>Software Engineering program</strong>, where I first
+              encountered <strong>ChatGPT</strong>, which became a personal
+              mentor. Through it, I could{" "}
+              <strong>
+                learn programming concepts, debug problems, and experiment with
+                projects
+              </strong>
+              , strengthening my foundation in multiple programming languages.
+            </p>
+            <p>
+              As I built more confidence, I moved into{" "}
+              <strong>web development</strong>, mastering{" "}
+              <strong>frontend frameworks like React</strong>. In my second
+              year, I landed my first job as a{" "}
+              <strong>Frontend Developer</strong>, but I didn’t stop there.
+              Every day became an opportunity to learn new technologies:{" "}
+              <strong>
+                backend development, mobile development with Flutter, databases,
+                AI systems, and workflow automation
+              </strong>
+              .
+            </p>
+            <p>
+              Today, I work as a <strong>Software Engineer</strong> building{" "}
+              <strong>holistic, end-to-end systems</strong> that integrate{" "}
+              <strong>
+                web, mobile, backend, databases, AI pipelines, and automation
+                workflows
+              </strong>
+              . My approach balances{" "}
+              <strong>
+                performance, scalability, modularity, and real-world business
+                impact
+              </strong>
+              , and I continuously push myself to turn{" "}
+              <strong>ideas into production-ready applications</strong> that
+              solve real problems.
+            </p>
+          </div>
+          <div className="ab-timeline">
+            {timeline.map((t, i) => (
+              <div
+                key={i}
+                className="ab-tl-item"
+                style={{ animationDelay: `${0.2 + i * 0.15}s` }}
+              >
+                <div className="ab-tl-marker">
+                  <div className="ab-tl-dot" />
+                  <div className="ab-tl-line" />
+                </div>
+                <div className="ab-tl-content">
+                  <div className="ab-tl-year">{t.year}</div>
+                  <div className="ab-tl-label">{t.label}</div>
+                  <div className="ab-tl-desc">{t.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ══ 3. HOW I WORK ══ */}
+      <div
+        ref={howI.ref}
+        className={`ab-section ab-process ${howI.visible ? "ab--in" : ""}`}
+      >
+        <div className="ab-section-label">03 — Process</div>
+        <h2 className="ab-section-heading">How I Work</h2>
+        <div className="ab-process-grid">
+          {process.map((p, i) => (
+            <div
+              key={i}
+              className="ab-process-card"
+              style={{ animationDelay: `${0.1 + i * 0.12}s` }}
+            >
+              <span className="ab-process-num">{p.num}</span>
+              <h3 className="ab-process-title">{p.title}</h3>
+              <div className="ab-process-divider" />
+              <p className="ab-process-body">{p.body}</p>
+              <div className="ab-process-corner tl" />
+              <div className="ab-process-corner tr" />
+              <div className="ab-process-corner bl" />
+              <div className="ab-process-corner br" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══ 4. TECH PHILOSOPHY ══ */}
+      <div
+        ref={philos.ref}
+        className={`ab-section ab-philos ${philos.visible ? "ab--in" : ""}`}
+      >
+        <div className="ab-philos-inner">
+          <div className="ab-section-label">04 — Philosophy</div>
+          <div className="ab-philos-quote">
+            Technology should
+            <br />
+            feel <span className="ab-accent-text">invisible</span>.
+          </div>
+          <div className="ab-philos-text">
+            <p>
+              The best systems are the ones users never notice —<br />
+              they simply work, adapt, and scale naturally.
+            </p>
+            <p>
+              My goal is to design software that is not only functional but also
+              resilient, maintainable, and future-ready.
+            </p>
+          </div>
+          <div className="ab-philos-bg-text" aria-hidden>
+            PHILOSOPHY
+          </div>
+        </div>
+      </div>
+
+      {/* ══ 5. OUTSIDE THE CODE ══ */}
+      <div
+        ref={outside_.ref}
+        className={`ab-section ab-outside ${outside_.visible ? "ab--in" : ""}`}
+      >
+        <div className="ab-section-label">05 — Human</div>
+        <h2 className="ab-section-heading">Outside the Code</h2>
+        <div className="ab-outside-grid">
+          <div className="ab-outside-text">
+            <p>
+              Outside of development, I enjoy exploring emerging technology
+              trends, studying system design, and building experimental
+              projects.
+            </p>
+            <p>
+              I believe curiosity is the most powerful skill an engineer can
+              have.
+            </p>
+          </div>
+          <div className="ab-outside-cards">
+            {outside.map((o, i) => (
+              <div
+                key={i}
+                className="ab-outside-card"
+                style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+              >
+                <span className="ab-outside-icon">{o.icon}</span>
+                <span className="ab-outside-label">{o.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ══ 6. CTA ══ */}
+      <div
+        ref={cta.ref}
+        className={`ab-section ab-cta ${cta.visible ? "ab--in" : ""}`}
+      >
+        <div className="ab-cta-inner">
+            <div className="ab-section-label">06 — Connect</div>
+            <h2 className="ab-cta-heading">
+              Let's Build Something
+              <br />
+              <span className="ab-accent-text">Meaningful</span>
+            </h2>
+            <p className="ab-cta-body">
+              If you're working on an interesting project or need help building
+              intelligent software systems, I'd love to connect.
+            </p>
+            <div className="ab-cta-btns">
+              <a href="/#projects" className="ab-btn ab-btn--primary">
+                View Projects
+              </a>
+              <a
+                href="mailto:inoumanmalik@outlook.com"
+                className="ab-btn ab-btn--ghost"
+              >
+                Email Me
+              </a>
+            </div>
+            <p
+              className="ab-cta-body"
+            style={{ marginTop: "-1.5rem", opacity: 0.6, fontSize: "0.75rem" }}
+            >
+              Call: +92 314 4221693 | GitHub: iNoumanMalik
+            </p>
+            <div className="ab-cta-decoration" aria-hidden>
+              {"// let's work = () => greatThings();"}
+          </div>
         </div>
       </div>
     </section>
