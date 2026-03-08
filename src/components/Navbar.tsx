@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 // import { useTheme } from "../context/ThemeContext";
 import logo from "../assets/layers-ic.png";
 import gsap from "gsap";
+import { useNavigate } from "react-router-dom";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollToPlugin);
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
   // const { theme } = useTheme();
 
   const handleLogoClick = () => {
@@ -41,6 +43,10 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleHomeClick = () => {
+    navigate("/")
+  }
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 dark:bg-black/50 backdrop-blur-md py-4 shadow-sm dark:shadow-none" : "bg-transparent py-6"
@@ -49,7 +55,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div onClick={handleLogoClick} className="flex items-center gap-2 text-xl text-gray-900 dark:text-white cursor-pointer shrink-0">
           <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
-          <span className="font-semibold tracking-tight hidden sm:block">portfolio</span>
+          <span onClick={handleHomeClick} className="font-semibold tracking-tight hidden sm:block">portfolio</span>
         </div>
 
         {/* Desktop Nav */}
