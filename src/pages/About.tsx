@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./About.css";
-
+import myphoto from "../assets/me/profile.jpeg"
 /* ─── Intersection Observer hook ─── */
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -113,7 +113,7 @@ const About = () => {
               <div className="ab-avatar-ring" />
               <div className="ab-avatar-inner">
                 <img
-                  src="/src/assets/me/profile.jpeg"
+                  src= {myphoto}
                   alt="About me photo"
                 />
               </div>
