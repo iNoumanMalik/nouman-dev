@@ -87,12 +87,12 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative w-full min-h-screen text-gray-900 dark:text-white py-24 px-6 overflow-hidden flex flex-col items-center justify-center bg-transparent transition-colors duration-300"
+      className="relative w-full min-h-screen text-gray-900 dark:text-white py-16 md:py-24 px-5 md:px-6 overflow-hidden flex flex-col items-center justify-center bg-transparent transition-colors duration-300"
     >
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="contact-orb absolute top-[10%] left-[5%] w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[140px]" />
-        <div className="contact-orb absolute bottom-[10%] right-[5%] w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[140px]" />
+        <div className="contact-orb absolute top-[10%] left-[5%] w-[260px] h-[260px] md:w-[500px] md:h-[500px] bg-blue-600/5 md:bg-blue-600/5 rounded-full blur-[90px] md:blur-[140px]" />
+        <div className="contact-orb absolute bottom-[10%] right-[5%] w-[260px] h-[260px] md:w-[500px] md:h-[500px] bg-indigo-600/5 md:bg-indigo-600/5 rounded-full blur-[90px] md:blur-[140px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-4xl">
@@ -100,7 +100,7 @@ export default function ContactSection() {
           <span className="text-blue-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">
             Ready for Transmission
           </span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter uppercase">
             Get in Touch
           </h2>
         </header>
@@ -149,8 +149,8 @@ export default function ContactSection() {
                 </div>
 
                 {/* Form Body */}
-                <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <form onSubmit={handleSubmit} className="p-5 sm:p-6 md:p-12 space-y-6 md:space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
                     <div className="space-y-2">
                       <label className="text-[10px] font-mono text-gray-500 dark:text-white/30 uppercase tracking-widest ml-1">
                         Identity
@@ -211,7 +211,7 @@ export default function ContactSection() {
             </div>
 
             {/* Structured Footer Links (LinkedIn, GitHub, Location, Direct) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-gray-200 dark:border-white/5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-10 md:pt-12 border-t border-gray-200 dark:border-white/5">
               <div className="space-y-3">
                 <h4 className="text-[10px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest">
                   Social
@@ -263,7 +263,7 @@ export default function ContactSection() {
                 <h4 className="text-[10px] font-mono text-gray-500 dark:text-white/20 uppercase tracking-widest">
                   Availability
                 </h4>
-                <p className="text-sm text-emerald-400/80 flex items-center gap-2">
+                <p className="text-sm text-emerald-600 dark:text-emerald-400/80 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   Open for Projects
                 </p>

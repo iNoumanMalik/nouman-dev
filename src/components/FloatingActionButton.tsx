@@ -153,7 +153,7 @@ const FloatingActionButton = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-8 right-8 z-50 flex flex-col items-end pointer-events-none"
+      className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-end pointer-events-none"
     // pointer-events-none on container to let clicks pass through empty spaces,
     // but we need pointer-events-auto on buttons
     >
@@ -171,7 +171,7 @@ const FloatingActionButton = () => {
               >
                 <div className="group relative flex items-center justify-center">
                   {/* Tooltip */}
-                  <div className="absolute right-full mr-3 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
+                  <div className="hidden md:block absolute right-full mr-3 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
                     {action.label}
                   </div>
 
@@ -181,7 +181,7 @@ const FloatingActionButton = () => {
                       e.stopPropagation();
                       action.onClick();
                     }}
-                    className={`text-black dark:text-white p-3 rounded-full shadow-lg  active:scale-95 transition-all md:w-12 md:h-12 w-14 h-14 flex items-center justify-center`}
+                    className={`text-black dark:text-white p-2.5 md:p-3 rounded-full shadow-lg active:scale-95 transition-all md:w-12 md:h-12 w-11 h-11 flex items-center justify-center`}
                     aria-label={action.label}
                   >
                     {action.icon}
@@ -194,12 +194,12 @@ const FloatingActionButton = () => {
         {/* Main Toggle Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative z-10 shadow-lg dark:bg-white/1 backdrop-blur-xl border border-white/10 hover:border-white/15 text-black dark:text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer md:w-12 md:h-12 w-12 h-12"
+          className="relative z-10 shadow-lg dark:bg-white/1 backdrop-blur-xl border border-white/10 hover:border-white/15 text-black dark:text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer md:w-12 md:h-12 w-11 h-11"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           animate={{ rotate: isOpen ? 45 : 0 }}
         >
-          <Plus size={30} />
+          <Plus className="w-6 h-6 md:w-7 md:h-7" />
         </motion.button>
       </div>
     </div>

@@ -48,7 +48,7 @@ const servicesData: CategoryItem[] = [
     services: [
       { title: "Frontend Development", icon: Code },
       { title: "Backend Development", icon: Server },
-      { title: "Full-Stack Web Development", icon: Globe },
+      { title: "Full-Stack Web/App Development", icon: Globe },
       { title: "SaaS MVP Development", icon: Rocket },
     ],
   },
@@ -95,6 +95,7 @@ const Services = () => {
   const componentRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const mobileTickingRef = useRef(false);
 
   // GSAP ScrollTrigger Setup
   useLayoutEffect(() => {
@@ -149,6 +150,24 @@ const Services = () => {
 
   const activeCategory = servicesData[activeCategoryIndex];
 
+  const handleMobileTrackScroll = () => {
+    if (window.innerWidth >= 768 || !sliderRef.current || mobileTickingRef.current) return;
+    mobileTickingRef.current = true;
+    requestAnimationFrame(() => {
+      if (!sliderRef.current) {
+        mobileTickingRef.current = false;
+        return;
+      }
+      const cardWidth = sliderRef.current.clientWidth * 0.85 + 24;
+      const nextIndex = Math.round(sliderRef.current.scrollLeft / cardWidth);
+      const boundedIndex = Math.min(Math.max(nextIndex, 0), servicesData.length - 1);
+      if (boundedIndex !== activeCategoryIndex) {
+        setActiveCategoryIndex(boundedIndex);
+      }
+      mobileTickingRef.current = false;
+    });
+  };
+
   return (
     <div
       ref={componentRef}
@@ -156,17 +175,17 @@ const Services = () => {
       className="relative bg-transparent text-gray-900 dark:text-white overflow-hidden transition-colors duration-300"
     >
       {/* Desktop: Pinned Height Container / Mobile: Auto Height */}
-      <div className="h-screen flex flex-col px-6 md:px-0 py-20 md:py-0">
+      <div className="min-h-[100svh] md:h-screen flex flex-col px-4 sm:px-6 md:px-0 py-14 md:py-0">
         {/* Background Texture */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col h-full md:h-auto justify-center">
           {/* Header */}
-          <div className="pt-16 md:pt-12 mb-12 text-center md:text-left md:px-12 ">
+          <div className="pt-14 md:pt-12 mb-8 md:mb-12 text-center md:text-left md:px-12">
             <span className="text-blue-500 font-mono text-xs uppercase tracking-[0.3em] block mb-2">
               Services
             </span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-gray-900 dark:text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter text-gray-900 dark:text-white">
               What I{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">
                 Deliver
@@ -183,29 +202,30 @@ const Services = () => {
           <div className="w-full overflow-hidden md:overflow-visible relative ">
             <div
               ref={sliderRef}
+              onScroll={handleMobileTrackScroll}
               className="flex flex-row gap-6 md:gap-0
                                md:w-[400%] 
                                overflow-x-auto md:overflow-visible 
                                snap-x snap-mandatory scrollbar-none 
-                               px-6 md:px-0"
+                               px-2 sm:px-6 md:px-0"
             >
               {servicesData.map((category, index) => {
                 const isActive = index === activeCategoryIndex;
                 return (
                   <div
                     key={category.id}
-                    className="w-[85vw] shrink-0 md:w-1/4 h-[300px] md:h-[400px] 
-                                           flex items-center justify-center p-4 snap-center"
+                    className="w-[85vw] shrink-0 md:w-1/4 h-[260px] sm:h-[300px] md:h-[400px] 
+                                           flex items-center justify-center py-2 md:p-4 snap-center"
                     onClick={() => setActiveCategoryIndex(index)} // Allow click on mobile/desktop
                   >
                     <motion.div
                       className={`
-                                        w-full h-full rounded-3xl p-8 md:p-12 relative overflow-hidden
+                                        w-full h-full rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden
                                         flex flex-col justify-between 
                                         border transition-all duration-500 group
                                         ${isActive
-                          ? "bg-white dark:bg-[#111] border-gray-200 dark:border-white/20 shadow-2xl scale-100 opacity-100"
-                          : "bg-gray-100 dark:bg-[#050505] border-gray-200 dark:border-white/5 opacity-50 scale-95 blur-[2px]"
+                          ? "bg-white dark:bg-[#111] border-gray-200 dark:border-white/20 md:shadow-2xl scale-100 opacity-100"
+                          : "bg-gray-100 dark:bg-[#050505] border-gray-200 dark:border-white/5 md:opacity-50 md:scale-95 md:blur-[2px]"
                         }
                                     `}
                     >
@@ -231,10 +251,10 @@ const Services = () => {
 
                       {/* Title */}
                       <div className="relative z-10">
-                        <h3 className="text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2">
+                        <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight mb-2">
                           {category.title}
                         </h3>
-                        <p className="font-mono text-sm tracking-widest text-gray-500 dark:text-white/50 uppercase">
+                        <p className="font-mono text-xs sm:text-sm tracking-[0.12em] md:tracking-widest text-gray-500 dark:text-white/50 uppercase">
                           {category.tagline}
                         </p>
                       </div>
@@ -253,7 +273,7 @@ const Services = () => {
           {/* --- Layer 2: Services (Fixed Bottom Panel) --- */}
           {/* Stays fixed in view while Categories scroll above it (on Desktop) */}
           {/* On mobile, it appears below the scroll area */}
-          <div className="mt-8 md:mt-12 h-[180px] md:h-[200px] px-6 md:px-12 relative">
+          <div className="mt-6 md:mt-12 min-h-[180px] md:h-[200px] px-4 sm:px-6 md:px-12 relative">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory.id}
