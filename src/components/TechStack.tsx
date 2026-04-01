@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { Zap, Cloud, Database, Server, Brain } from "lucide-react";
 
@@ -188,6 +188,27 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
 
 // --- Main Layout ---
 const BentoTechStack = () => {
+  const mobileTrackRef = useRef<HTMLDivElement>(null);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+
+  const handleMobileScroll = () => {
+    const el = mobileTrackRef.current;
+    if (!el) return;
+    const cardWidth = el.clientWidth;
+    if (!cardWidth) return;
+    const next = Math.round(el.scrollLeft / cardWidth);
+    if (next !== activeMobileIndex) {
+      setActiveMobileIndex(next);
+    }
+  };
+
+  const scrollToMobileCard = (index: number) => {
+    const el = mobileTrackRef.current;
+    if (!el) return;
+    el.scrollTo({ left: index * el.clientWidth, behavior: "smooth" });
+    setActiveMobileIndex(index);
+  };
+
   return (
     <section id="techstack" className="relative py-20 md:py-32 bg-transparent px-4 sm:px-6 overflow-hidden transition-colors duration-300">
 
@@ -217,8 +238,37 @@ const BentoTechStack = () => {
           </div>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* Mobile: Swipeable cards */}
+        <div className="md:hidden">
+          <p className="text-center text-[10px] font-mono uppercase tracking-[0.18em] text-gray-500 dark:text-white/40 mb-4">
+            Swipe to explore modules
+          </p>
+          <div
+            ref={mobileTrackRef}
+            onScroll={handleMobileScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {stackData.map((item, idx) => (
+              <div key={idx} className="w-full shrink-0 snap-center px-1">
+                <BentoCard item={item} />
+              </div>
+            ))}
+          </div>
+          <div className="mt-5 flex items-center justify-center gap-2">
+            {stackData.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Go to module ${index + 1}`}
+                onClick={() => scrollToMobileCard(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${activeMobileIndex === index ? "w-6 bg-blue-500" : "w-2 bg-gray-300 dark:bg-white/30"}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: existing bento grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {stackData.map((item, idx) => (
             <BentoCard key={idx} item={item} />
           ))}
