@@ -129,37 +129,37 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
       />
 
       {/* 2. Inner Content */}
-      <div className="relative h-full p-8 flex flex-col pt-12">
+      <div className="relative h-full p-5 sm:p-6 md:p-8 flex flex-col pt-8 sm:pt-10 md:pt-12">
 
         {/* Header: Icon & Title */}
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex items-start justify-between mb-4 md:mb-6">
           {/* <div className={`p-3 rounded-2xl bg-white/5 border border-white/10 text-white ${isHovered ? 'scale-110' : ''} transition-transform duration-300`}>
             {React.cloneElement(item.icon as React.ReactElement<any>, { className: `w-6 h-6 text-${item.accent}-400` })}
           </div> */}
-          <div className={`text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-white/5 text-blue-600 dark:text-${item.accent}-300/80`}>
+          <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.12em] md:tracking-widest px-3 py-1 rounded-full border border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-white/5 text-blue-600 dark:text-white/80">
             Module 0{stackData.indexOf(item) + 1}
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight group-hover:text-blue-600 dark:group-hover:text-transparent dark:group-hover:bg-clip-text dark:group-hover:bg-gradient-to-r dark:group-hover:from-white dark:group-hover:to-white/70 transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight group-hover:text-blue-600 dark:group-hover:text-transparent dark:group-hover:bg-clip-text dark:group-hover:bg-gradient-to-r dark:group-hover:from-white dark:group-hover:to-white/70 transition-colors">
           {item.title}
         </h3>
 
-        <p className="text-gray-600 dark:text-white/50 text-sm leading-relaxed mb-6 max-w-sm">
+        <p className="text-gray-700 dark:text-white/60 text-sm leading-relaxed mb-5 md:mb-6 max-w-sm">
           {item.description}
         </p>
 
         {/* Skills Tags */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
           {item.skills.slice(0, 4).map((skill) => (
-            <span key={skill} className={`px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-md border border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-white/70 group-hover:border-blue-500/30 dark:group-hover:border-${item.accent}-500/30 group-hover:text-blue-600 dark:group-hover:text-${item.accent}-300 transition-colors`}>
+            <span key={skill} className="px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.08em] rounded-md border border-gray-200 dark:border-white/5 bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-white/70 group-hover:border-blue-500/30 dark:group-hover:border-white/30 group-hover:text-blue-600 dark:group-hover:text-white transition-colors">
               {skill}
             </span>
           ))}
         </div>
 
         {/* Hover Details (Progress Bars) - Push to bottom */}
-        <div className="mt-auto space-y-3 pt-6 border-t border-gray-100 dark:border-white/5">
+        <div className="mt-auto space-y-3 pt-5 md:pt-6 border-t border-gray-100 dark:border-white/5">
           {item.details.map((detail, idx) => (
             <div key={idx} className="space-y-1">
               <div className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500 dark:text-white/40 group-hover:text-gray-900 dark:group-hover:text-white/70 transition-colors">
@@ -189,7 +189,7 @@ const BentoCard = ({ item }: { item: typeof stackData[0] }) => {
 // --- Main Layout ---
 const BentoTechStack = () => {
   return (
-    <section id="techstack" className="relative py-32 bg-transparent px-6 overflow-hidden transition-colors duration-300">
+    <section id="techstack" className="relative py-20 md:py-32 bg-transparent px-4 sm:px-6 overflow-hidden transition-colors duration-300">
 
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
@@ -197,12 +197,12 @@ const BentoTechStack = () => {
       <div className="max-w-6xl mx-auto relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-10 md:mb-20 gap-6 md:gap-8">
           <div className="max-w-2xl">
             <span className="text-blue-500 font-mono text-xs uppercase tracking-[0.3em] mb-4 block">
               System Architecture
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-[0.9]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-[0.95] md:leading-[0.9]">
               Engineering <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-600">Arsenal</span>
             </h2>
@@ -218,7 +218,7 @@ const BentoTechStack = () => {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {stackData.map((item, idx) => (
             <BentoCard key={idx} item={item} />
           ))}
