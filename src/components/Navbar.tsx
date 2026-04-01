@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 // import { useTheme } from "../context/ThemeContext";
 import logo from "../assets/layers-ic.png";
 import gsap from "gsap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollToPlugin);
@@ -11,6 +11,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   // const { theme } = useTheme();
 
   const handleLogoClick = () => {
@@ -56,6 +57,18 @@ const Navbar = () => {
   }
 
   const navItems = ["TechStack", "Services", "Projects", "Experience"];
+
+  const handleRouteNavigation = (path: "/" | "/about") => {
+    setIsMobileMenuOpen(false);
+    if (location.pathname !== path) {
+      navigate(path);
+      return;
+    }
+
+    if (path === "/") {
+      gsap.to(window, { duration: 0.8, scrollTo: 0, ease: "power2.inOut" });
+    }
+  };
 
   return (
     <nav
@@ -114,6 +127,21 @@ const Navbar = () => {
         className={`md:hidden absolute left-4 right-4 top-[calc(100%+0.5rem)] rounded-2xl border border-gray-200 dark:border-white/10 bg-white/95 dark:bg-black/90 backdrop-blur-md shadow-xl transition-all duration-300 ${isMobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
       >
         <div className="p-3 flex flex-col gap-1">
+          <button
+            type="button"
+            onClick={() => handleRouteNavigation("/")}
+            className="px-3 py-3 rounded-xl text-sm font-semibold text-left text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 uppercase tracking-wider"
+          >
+            Home
+          </button>
+          <button
+            type="button"
+            onClick={() => handleRouteNavigation("/about")}
+            className="px-3 py-3 rounded-xl text-sm font-semibold text-left text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 uppercase tracking-wider"
+          >
+            About
+          </button>
+
           {navItems.map((item) => (
             <a
               key={item}
