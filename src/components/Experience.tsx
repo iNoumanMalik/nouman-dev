@@ -95,19 +95,19 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="relative w-full min-h-screen bg-transparent text-gray-900 dark:text-white py-32 px-6 overflow-hidden transition-colors duration-300">
+    <section id="experience" className="relative w-full min-h-screen bg-transparent text-gray-900 dark:text-white py-20 md:py-32 px-5 md:px-6 overflow-hidden transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
-        <header className="mb-20">
-          <h2 className="text-4xl font-bold tracking-tighter mb-4 uppercase text-gray-900 dark:text-white">Experience</h2>
+        <header className="mb-12 md:mb-20">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 uppercase text-gray-900 dark:text-white">Experience</h2>
           <div className="w-12 h-1 bg-gray-900/10 dark:bg-white/20" />
         </header>
 
-        <div className="relative border-l border-gray-200 dark:border-white/10 ml-4 space-y-12">
+        <div className="relative border-l border-gray-200 dark:border-white/10 ml-3 md:ml-4 space-y-8 md:space-y-12">
           {experiences.map((exp) => (
             <div
               key={exp.id}
               onClick={() => setSelectedExp(exp)}
-              className="relative pl-10 group cursor-pointer"
+              className="relative pl-7 md:pl-10 group cursor-pointer"
             >
               {/* Timeline Dot - Using canonical Tailwind classes w-2.5 h-2.5 */}
               <div className="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-white/20 group-hover:bg-blue-600 dark:group-hover:bg-white group-hover:scale-150 transition-all" />
@@ -120,7 +120,7 @@ export default function Experience() {
                     </h3>
                     <p className="text-gray-600 dark:text-white/60 font-medium">{exp.company}</p>
                   </div>
-                  <div className="text-gray-400 dark:text-white/30 font-mono text-sm uppercase tracking-widest">
+                  <div className="text-gray-400 dark:text-white/30 font-mono text-[11px] md:text-sm uppercase tracking-[0.12em] md:tracking-widest">
                     {exp.period}
                   </div>
                 </div>
@@ -141,10 +141,10 @@ export default function Experience() {
             ref={overlayRef}
             className="relative w-full md:w-[65%] lg:w-[50%] h-full bg-white dark:bg-[#111] border-l border-gray-100 dark:border-white/10 shadow-2xl overflow-y-auto"
           >
-            <div className="p-8 md:p-12">
+            <div className="p-5 sm:p-6 md:p-12">
               <button
                 onClick={closeOverlay}
-                className="mb-12 ml-auto text-gray-500 dark:text-white/40 hover:text-gray-900 dark:hover:text-white flex items-center gap-2 font-mono text-xs uppercase tracking-widest"
+                className="mb-7 md:mb-12 ml-auto text-gray-500 dark:text-white/40 hover:text-gray-900 dark:hover:text-white flex items-center gap-2 font-mono text-[11px] md:text-xs uppercase tracking-[0.15em] md:tracking-widest"
               >
                 <span>←</span> Back to Timeline
               </button>
@@ -154,18 +154,18 @@ export default function Experience() {
                   <span className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-4">
                     {selectedExp.type}
                   </span>
-                  <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-2">
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-2">
                     {selectedExp.role}
                   </h2>
-                  <p className="text-2xl text-gray-600 dark:text-white/60 font-medium">{selectedExp.company}</p>
-                  <p className="text-gray-400 dark:text-white/30 font-mono mt-2">{selectedExp.location} • {selectedExp.period}</p>
+                  <p className="text-xl md:text-2xl text-gray-600 dark:text-white/60 font-medium">{selectedExp.company}</p>
+                  <p className="text-gray-400 dark:text-white/30 font-mono mt-2 text-xs md:text-sm leading-relaxed">{selectedExp.location} • {selectedExp.period}</p>
                 </div>
 
                 <div className="h-px w-full bg-gray-100 dark:bg-white/5" />
 
                 <div className="space-y-6">
                   <h4 className="text-sm font-mono text-gray-400 dark:text-white/40 uppercase tracking-[0.2em]">The Mission</h4>
-                  <p className="text-lg text-gray-700 dark:text-white/80 leading-relaxed">
+                  <p className="text-base md:text-lg text-gray-700 dark:text-white/80 leading-relaxed">
                     {selectedExp.description}
                   </p>
                 </div>

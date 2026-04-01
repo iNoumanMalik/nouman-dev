@@ -652,3 +652,22 @@
   color: var(--ab-border);
   user-select: none;
 }
+
+/* Mobile spacing refinement */
+@media (max-width: 768px) {
+  .ab-section {
+    padding: 4.25rem 1.25rem;
+  }
+
+  .ab-hero {
+    padding-top: 4.5rem;
+  }
+
+  .ab-philos {
+    padding: 5rem 1.25rem;
+  }
+
+  .ab-cta {
+    padding: 4.5rem 1.25rem 5.25rem;
+  }
+}
