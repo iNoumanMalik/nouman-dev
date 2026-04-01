@@ -244,6 +244,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    width={420}
+                    height={420}
                     className="w-full h-full object-contain transition-transform duration-500"
                     style={{
                       filter:

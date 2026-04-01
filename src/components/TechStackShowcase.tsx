@@ -229,7 +229,15 @@ const TechStackShowcase = () => {
                 shadow-lg cursor-pointer border border-gray-200 dark:border-white/20 relative overflow-hidden"
               >
                 {tech.imgSrc ? (
-                  <img src={tech.imgSrc} alt={tech.name} className="w-6 h-6 md:w-9 md:h-9" />
+                  <img
+                    src={tech.imgSrc}
+                    alt={tech.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={36}
+                    height={36}
+                    className="w-6 h-6 md:w-9 md:h-9"
+                  />
                 ) : (
                   <tech.icon className="w-7 h-7 md:w-8 md:h-8 text-gray-900 dark:text-white" />
                 )}
@@ -284,7 +292,15 @@ const TechStackShowcase = () => {
                         rounded-xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]"
                       >
                         {tech.imgSrc ? (
-                          <img src={tech.imgSrc} alt={tech.name} className="w-6 h-6" />
+                          <img
+                            src={tech.imgSrc}
+                            alt={tech.name}
+                            loading="lazy"
+                            decoding="async"
+                            width={24}
+                            height={24}
+                            className="w-6 h-6"
+                          />
                         ) : (
                           <tech.icon className="w-6 h-6 text-gray-900" />
                         )}

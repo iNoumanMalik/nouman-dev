@@ -77,7 +77,15 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
         <div onClick={handleLogoClick} className="flex items-center gap-2 text-xl text-gray-900 dark:text-white cursor-pointer shrink-0">
-          <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
+          <img
+            src={logo}
+            alt="Logo"
+            width={32}
+            height={32}
+            loading="eager"
+            decoding="async"
+            className="w-8 h-8 object-contain"
+          />
           <span onClick={handleHomeClick} className="font-semibold tracking-tight hidden sm:block">portfolio</span>
         </div>
 

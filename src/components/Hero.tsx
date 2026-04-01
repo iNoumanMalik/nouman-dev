@@ -16,34 +16,40 @@ gsap.registerPlugin(ScrollTrigger);
 // --- 3D Character/Scene Component ---
 interface EnergyCoreProps {
   progressRef: React.MutableRefObject<number>;
+  reduceMotion: boolean;
+  isLowPowerDevice: boolean;
 }
 
-const EnergyCore: React.FC<EnergyCoreProps> = ({ progressRef }) => {
+const EnergyCore: React.FC<EnergyCoreProps> = ({ progressRef, reduceMotion, isLowPowerDevice }) => {
   const meshRef = useRef<THREE.Mesh>(null!);
   const wireframeRef = useRef<THREE.Mesh>(null!);
   const groupRef = useRef<THREE.Group>(null!);
 
   useFrame((state) => {
-    if (!meshRef.current || !groupRef.current || !wireframeRef.current) return;
+    if (!meshRef.current || !groupRef.current) return;
 
     // Read directly from the ref
     const scrollProgress = progressRef.current;
 
     // rotation speed increases with scroll
-    meshRef.current.rotation.x += 0.005 + scrollProgress * 0.01;
-    meshRef.current.rotation.y += 0.01 + scrollProgress * 0.01;
+    const motionFactor = reduceMotion ? 0.2 : isLowPowerDevice ? 0.55 : 1;
+    meshRef.current.rotation.x += (0.005 + scrollProgress * 0.01) * motionFactor;
+    meshRef.current.rotation.y += (0.01 + scrollProgress * 0.01) * motionFactor;
 
     // Wireframe rotates slightly differently creates depth
-    wireframeRef.current.rotation.x = meshRef.current.rotation.x;
-    wireframeRef.current.rotation.y = meshRef.current.rotation.y;
+    if (wireframeRef.current) {
+      wireframeRef.current.rotation.x = meshRef.current.rotation.x;
+      wireframeRef.current.rotation.y = meshRef.current.rotation.y;
+    }
 
     // Distortion "breathing" effect
     if (meshRef.current.material) {
       const mat = meshRef.current.material as any;
       // More dynamic distort
-      mat.distort =
-        0.3 + Math.sin(state.clock.elapsedTime) * 0.1 + scrollProgress * 0.5;
-      mat.speed = 2 + scrollProgress * 5;
+      mat.distort = reduceMotion
+        ? 0.2
+        : 0.3 + Math.sin(state.clock.elapsedTime) * 0.1 + scrollProgress * 0.35;
+      mat.speed = reduceMotion ? 0.7 : isLowPowerDevice ? 1.3 : 2 + scrollProgress * 4;
     }
 
     // --- Smooth Interpolation Logic ---
@@ -82,12 +88,16 @@ const EnergyCore: React.FC<EnergyCoreProps> = ({ progressRef }) => {
     }
 
     // Smooth LERP to the calculated target
-    groupRef.current.position.lerp(targetPos, 0.1);
+    groupRef.current.position.lerp(targetPos, reduceMotion ? 0.06 : 0.1);
   });
 
   return (
     <group ref={groupRef}>
-      <Float speed={4} rotationIntensity={1} floatIntensity={2}>
+      <Float
+        speed={reduceMotion ? 1 : isLowPowerDevice ? 2.2 : 4}
+        rotationIntensity={reduceMotion ? 0.25 : 1}
+        floatIntensity={reduceMotion ? 0.5 : isLowPowerDevice ? 1.2 : 2}
+      >
         {/* Core */}
         <mesh ref={meshRef} scale={0.8}>
           <torusKnotGeometry args={[1, 0.35, 128, 32]} />
@@ -103,24 +113,27 @@ const EnergyCore: React.FC<EnergyCoreProps> = ({ progressRef }) => {
           />
         </mesh>
 
-        {/* Wireframe Shell */}
-        <mesh ref={wireframeRef} scale={1.2}>
-          <torusKnotGeometry args={[1, 0.35, 128, 32]} />
-          <meshBasicMaterial
-            color={progressRef.current > 0.5 ? "#818cf8" : "#93c5fd"}
-            wireframe
-            transparent
-            opacity={0.1}
-          />
-        </mesh>
+        {!isLowPowerDevice && !reduceMotion && (
+          <mesh ref={wireframeRef} scale={1.2}>
+            <torusKnotGeometry args={[1, 0.35, 128, 32]} />
+            <meshBasicMaterial
+              color={progressRef.current > 0.5 ? "#818cf8" : "#93c5fd"}
+              wireframe
+              transparent
+              opacity={0.1}
+            />
+          </mesh>
+        )}
       </Float>
-      <ContactShadows
-        position={[0, -2.5, 0]}
-        opacity={0.4}
-        scale={10}
-        blur={2.5}
-        far={4}
-      />
+      {!isLowPowerDevice && !reduceMotion && (
+        <ContactShadows
+          position={[0, -2.5, 0]}
+          opacity={0.4}
+          scale={10}
+          blur={2.5}
+          far={4}
+        />
+      )}
     </group>
   );
 };
@@ -133,6 +146,24 @@ export default function ScrollytellingHero() {
   // For now, let's keep it simple: We DO need state for the UI bars to update,
   // but the 3D scene (heavy part) doesn't need to re-render.
   const [activeStep, setActiveStep] = React.useState(0);
+  const [reduceMotion, setReduceMotion] = React.useState(false);
+  const [isLowPowerDevice, setIsLowPowerDevice] = React.useState(false);
+  const isMobile = isLowPowerDevice;
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreferences = () => {
+      setReduceMotion(mediaQuery.matches);
+      setIsLowPowerDevice(window.innerWidth < 768);
+    };
+    updatePreferences();
+    mediaQuery.addEventListener("change", updatePreferences);
+    window.addEventListener("resize", updatePreferences);
+    return () => {
+      mediaQuery.removeEventListener("change", updatePreferences);
+      window.removeEventListener("resize", updatePreferences);
+    };
+  }, []);
 
   useEffect(() => {
     // Track Global Scroll (document.body)
@@ -140,37 +171,49 @@ export default function ScrollytellingHero() {
       trigger: document.body,
       start: "top top",
       end: "bottom bottom",
-      scrub: 0, // Instant scrubbing or slight smoothing
+      scrub: isLowPowerDevice ? 0 : 0.2,
       onUpdate: (self) => {
         progressRef.current = self.progress;
 
         // Update the UI indicator Step (0-4)
         // Optimization: only set state if changed
-        const newStep = Math.floor(self.progress * 5);
-        setActiveStep((prev) => (prev !== newStep ? newStep : prev));
+        if (!isLowPowerDevice) {
+          const newStep = Math.floor(self.progress * 5);
+          setActiveStep((prev) => (prev !== newStep ? newStep : prev));
+        }
       },
     });
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, []);
+  }, [isLowPowerDevice]);
 
   return (
     <div className="relative bg-transparent text-gray-900 dark:text-white transition-colors duration-300">
       {/* 1. Fixed Background Layer (3D) */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <Canvas shadows gl={{ antialias: true }}>
-          <Suspense fallback={null}>
-            <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1} />
-            {/* Pass ref, not state value, to prevent Canvas re-renders */}
-            <EnergyCore progressRef={progressRef} />
-            <Environment preset="city" />
-          </Suspense>
-        </Canvas>
-      </div>
+      {!isMobile && (
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <Canvas
+            dpr={isLowPowerDevice || reduceMotion ? [1, 1.2] : [1, 2]}
+            shadows={!isLowPowerDevice && !reduceMotion}
+            gl={{ antialias: !isLowPowerDevice, powerPreference: isLowPowerDevice ? "low-power" : "high-performance" }}
+          >
+            <Suspense fallback={null}>
+              <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
+              <ambientLight intensity={isLowPowerDevice ? 0.35 : 0.5} />
+              <pointLight position={[10, 10, 10]} intensity={isLowPowerDevice ? 0.7 : 1} />
+              {/* Pass ref, not state value, to prevent Canvas re-renders */}
+              <EnergyCore
+                progressRef={progressRef}
+                reduceMotion={reduceMotion}
+                isLowPowerDevice={isLowPowerDevice}
+              />
+              {!isLowPowerDevice && !reduceMotion && <Environment preset="city" />}
+            </Suspense>
+          </Canvas>
+        </div>
+      )}
 
       {/* 2. Fixed HUD Layer (Progress Indicator) */}
       <div className="hidden md:flex fixed left-6 md:left-10 top-1/2 -translate-y-1/2 z-50 flex-col gap-6 items-center mix-blend-difference">
