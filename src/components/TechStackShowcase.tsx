@@ -88,6 +88,7 @@ const TechStackShowcase = () => {
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [showAllMobileTech, setShowAllMobileTech] = useState(false);
 
   const uniqueAllTechnologies = useMemo(() => {
     const seen = new Set<string>();
@@ -108,6 +109,10 @@ const TechStackShowcase = () => {
       ? uniqueAllTechnologies
       : technologies[selectedCategory as keyof typeof technologies] || [];
 
+  const mobileVisibleTechnologies = showAllMobileTech
+    ? filteredTechnologies
+    : filteredTechnologies.slice(0, 12);
+
   const findTechCategory = (techName: string): string => {
     for (const [category, techs] of Object.entries(technologies)) {
       if (techs.some((tech: Tech) => tech.name === techName)) {
@@ -120,15 +125,15 @@ const TechStackShowcase = () => {
   const categories = ["all", ...Object.keys(technologies)];
 
   return (
-    <div className="min-h-screen bg-transparent py-20 px-4 transition-colors duration-300">
+    <div className="min-h-screen bg-transparent py-14 md:py-20 px-4 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6 md:mb-8 text-gray-900 dark:text-white">
             Technologies <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-600 ">
               I work with{" "}
@@ -137,11 +142,11 @@ const TechStackShowcase = () => {
         </motion.div>
 
         {/* Enhanced Category Filter Pills */}
-        <div className="relative mb-16 md:mb-8">
+        <div className="relative mb-10 md:mb-8">
           {/* Background decorative elements */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full max-w-2xl h-px bg-gradient-to-r from-transparent via-gray-900/10 dark:via-white/10 to-transparent" />
 
-          <div className="grid grid-cols-4 items-center md:flex md:flex-wrap justify-center md:gap-2 relative">
+          <div className="grid grid-cols-4 sm:grid-cols-5 items-center md:flex md:flex-wrap justify-center gap-2 md:gap-2 relative">
             {categories.map((cat) => (
               <motion.div
                 key={cat}
@@ -154,7 +159,10 @@ const TechStackShowcase = () => {
                 <CategoryPill
                   category={cat}
                   selected={selectedCategory === cat}
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => {
+                    setSelectedCategory(cat);
+                    setShowAllMobileTech(false);
+                  }}
                 />
 
                 {/* Hover tooltip for unselected categories */}
@@ -182,7 +190,7 @@ const TechStackShowcase = () => {
           {/* Active category indicator */}
           <motion.div
             layoutId="category-background"
-            className="absolute left-0 top-0 rounded-full bg-gradient-to-r from-blue-500/5 to-indigo-500/5 border border-blue-400/10 backdrop-blur-sm -z-10"
+            className="hidden md:block absolute left-0 top-0 rounded-full bg-gradient-to-r from-blue-500/5 to-indigo-500/5 border border-blue-400/10 backdrop-blur-sm -z-10"
             style={{
               width: selectedCategory === 'all' ? '44px' :
                 selectedCategory === 'frontend' ? '100px' :
@@ -206,7 +214,35 @@ const TechStackShowcase = () => {
         </div>
 
         {/* Tech Grid */}
-        <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 md:hidden">
+          {mobileVisibleTechnologies.map((tech: Tech) => (
+            <div
+              key={tech.name}
+              className="group relative"
+              onMouseEnter={() => setActiveTooltip(tech.name)}
+              onMouseLeave={() => setActiveTooltip(null)}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="w-[52px] h-[52px] md:w-16 md:h-16 mx-auto flex items-center justify-center
+                rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8] dark:from-[#1f1f1f] dark:via-[#252525] dark:to-[#303030]
+                shadow-lg cursor-pointer border border-gray-200 dark:border-white/20 relative overflow-hidden"
+              >
+                {tech.imgSrc ? (
+                  <img src={tech.imgSrc} alt={tech.name} className="w-6 h-6 md:w-9 md:h-9" />
+                ) : (
+                  <tech.icon className="w-7 h-7 md:w-8 md:h-8 text-gray-900 dark:text-white" />
+                )}
+              </motion.div>
+
+              <p className="text-center text-gray-700 dark:text-white/90 text-[11px] md:text-sm mt-2 font-medium leading-tight">
+                {tech.name}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="hidden md:grid md:grid-cols-6 lg:grid-cols-8 gap-4">
           {filteredTechnologies.map((tech: Tech) => (
             <div
               key={tech.name}
@@ -216,18 +252,18 @@ const TechStackShowcase = () => {
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-14 h-14 md:w-16 md:h-16 mx-auto flex items-center justify-center
-                rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8]
+                className="w-[52px] h-[52px] md:w-16 md:h-16 mx-auto flex items-center justify-center
+                rounded-2xl bg-gradient-to-br from-[#f5f5f5] via-[#dcdcdc] to-[#b8b8b8] dark:from-[#1f1f1f] dark:via-[#252525] dark:to-[#303030]
                 shadow-lg cursor-pointer border border-gray-200 dark:border-white/20 relative overflow-hidden"
               >
                 {tech.imgSrc ? (
-                  <img src={tech.imgSrc} alt={tech.name} className="w-7 h-7 md:w-9 md:h-9" />
+                  <img src={tech.imgSrc} alt={tech.name} className="w-6 h-6 md:w-9 md:h-9" />
                 ) : (
-                  <tech.icon className="w-8 h-8 text-gray-900" />
+                  <tech.icon className="w-7 h-7 md:w-8 md:h-8 text-gray-900 dark:text-white" />
                 )}
               </motion.div>
 
-              <p className="text-center text-gray-600 dark:text-white/90 text-xs md:text-sm mt-2 font-medium">
+              <p className="text-center text-gray-700 dark:text-white/90 text-[11px] md:text-sm mt-2 font-medium leading-tight">
                 {tech.name}
               </p>
 
@@ -277,6 +313,18 @@ const TechStackShowcase = () => {
             </div>
           ))}
         </div>
+
+        {filteredTechnologies.length > 12 && (
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAllMobileTech((prev) => !prev)}
+              className="md:hidden px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.12em] border border-gray-300 dark:border-white/20 text-gray-700 dark:text-white/80 bg-white/70 dark:bg-white/5"
+            >
+              {showAllMobileTech ? "Show Less" : `Show More (${filteredTechnologies.length - 12})`}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
