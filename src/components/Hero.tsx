@@ -242,7 +242,7 @@ export default function ScrollytellingHero() {
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-9xl font-black leading-[0.9] md:leading-[0.85] tracking-tighter uppercase">
             Engineering <br />
-            <span className="text-gray-500 dark:text-white/20">The Engine</span>
+            <span className="text-gray-400 dark:text-white/20">The Engine</span>
           </h1>
           <p className="text-gray-700 dark:text-white/60 font-light text-base sm:text-lg md:text-xl max-w-lg leading-relaxed">
             I architect the skeletons and forge the neural combustion chambers
