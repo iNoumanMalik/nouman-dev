@@ -7,7 +7,29 @@
     <title>Nouman | Software Engineer | Portfolio</title>
   </head>
   <body>
+    <style>
+      .sc-dUSlRn.kJVWIs.ygpts-frame {
+        width: 400px !important;
+        height: 550px !important;
+        bottom: 80px !important;
+        right: 15px !important;
+      }
+    </style>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      window.YGC_WIDGET_ID = import.meta.env.VITE_YOURGPT_WIDGET_ID;
+      console.log(window.YGC_WIDGET_ID)
+      window.YGC_WIDGET_CONFIG = {
+        launcher: { width: 50, height: 50 },
+        chatWindow: { width: 320, height: 520 },
+      };
+      (function () {
+        var script = document.createElement("script");
+        script.src = "https://widget.yourgpt.ai/script.js";
+        script.id = "yourgpt-chatbot";
+        document.body.appendChild(script);
+      })();
+    </script>
   </body>
 </html>
