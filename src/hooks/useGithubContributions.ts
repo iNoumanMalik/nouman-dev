@@ -6,7 +6,7 @@ export function useGithubContributions() {
   const [data, setData] = useState<ContributionCalendar | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  console.log(data)
+ 
 
   useEffect(() => {
     setLoading(true);
