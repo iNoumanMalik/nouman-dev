@@ -6,7 +6,6 @@ import { useGithubContributions } from "../hooks/useGithubContributions";
 const GitHubContributions = () => {
   const { theme } = useTheme();
   const { data, loading, error } = useGithubContributions();
-  console.log(data?.weeks);
   const [tooltip, setTooltip] = useState<{
     visible: boolean;
     x: number;
