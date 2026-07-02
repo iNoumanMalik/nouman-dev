@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 type ToastType = "copy" | "soon";
 
@@ -11,6 +12,7 @@ interface Toast {
 const Footer = () => {
   const [time, setTime] = useState(new Date());
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -113,9 +115,23 @@ const Footer = () => {
                 <li>
                   <a
                     href="/about"
-                    // onClick={(e) => handleComingSoon(e, "About")}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate("/about");
+                    }}
                   >
                     About
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/team"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate("/team");
+                    }}
+                  >
+                    Team
                   </a>
                 </li>
               </ul>

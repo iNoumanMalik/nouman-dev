@@ -1,0 +1,181 @@
+:root {
+  --team-bg: #ffffff;
+  --team-fg: #213547;
+  --team-muted: #64748b;
+  --team-border: #e2e8f0;
+  --team-accent: #2563eb;
+  --team-card: #f8fafc;
+  --team-glow: rgba(37, 99, 235, 0.15);
+}
+
+:root.dark {
+  --team-bg: #000000;
+  --team-fg: #eae8e1;
+  --team-muted: #94a3b8;
+  --team-border: #1e293b;
+  --team-accent: #60a5fa;
+  --team-card: #0f172a;
+  --team-glow: rgba(96, 165, 250, 0.12);
+}
+
+.team-root {
+  background: var(--team-bg);
+  color: var(--team-fg);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.team-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+.team-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--team-accent);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-inter), 'DM Mono', monospace;
+}
+
+.team-heading {
+  font-family: var(--font-jost), sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  color: var(--team-fg);
+}
+
+.team-accent {
+  color: var(--team-accent);
+  font-style: italic;
+}
+
+.team-sub {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--team-muted);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.team-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.team-connector-line {
+  width: 1px;
+  height: 40px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, var(--team-accent), transparent);
+  opacity: 0.3;
+}
+
+.team-connector-horizontal {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-connector-horizontal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--team-accent) 20%,
+    var(--team-accent) 80%,
+    transparent
+  );
+  opacity: 0.2;
+}
+
+.team-connector-drop {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--team-accent), transparent);
+  opacity: 0.25;
+}
+
+@keyframes team-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes team-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes team-glow-pulse {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.team-node-glow {
+  animation: team-glow-pulse 3s ease-in-out infinite;
+}
+
+.team-card-glow {
+  position: relative;
+}
+
+.team-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--team-accent), transparent, var(--team-accent));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.team-card-glow:hover::before {
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .team-connector-horizontal {
+    display: none;
+  }
+  .team-connector-line {
+    height: 24px;
+  }
+}
