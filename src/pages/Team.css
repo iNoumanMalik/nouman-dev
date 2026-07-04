@@ -171,6 +171,137 @@
   opacity: 0.5;
 }
 
+.team-principles {
+  position: relative;
+  z-index: 10;
+  background: var(--team-bg);
+}
+
+/* Eyebrow */
+.team-protocols-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--team-accent);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-inter), 'DM Mono', monospace;
+  text-align: center;
+}
+
+.team-protocols-heading {
+  font-family: var(--font-jost), sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0 0 1.5rem;
+  color: var(--team-fg);
+  text-align: center;
+}
+
+/* Loading Bar */
+.team-loading-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.team-loading-text {
+  font-family: var(--font-inter), 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--team-muted);
+  letter-spacing: 0.1em;
+}
+
+.team-loading-bar-container {
+  width: 240px;
+  height: 12px;
+  border: 1px solid var(--team-border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.team-loading-bar-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--team-accent) 10%,
+    var(--team-accent) 90%,
+    transparent
+  );
+  animation: loading-fill 2s ease-out forwards;
+}
+
+@keyframes loading-fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.team-loading-percent {
+  font-family: var(--font-inter), 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--team-accent);
+  letter-spacing: 0.1em;
+}
+
+/* Protocols Container */
+.team-protocols-container {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Protocol Card */
+.team-protocol-card {
+  border-top: 1px solid var(--team-border);
+  padding-top: 0.6rem;
+  padding-bottom: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.team-protocol-card:first-of-type {
+  border-top: 1px solid var(--team-border);
+}
+
+.team-protocol-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.team-checkmark {
+  color: var(--team-accent);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.team-protocol-title {
+  font-family: var(--font-inter), 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--team-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.team-protocol-body {
+  padding-left: 1.75rem;
+}
+
+.team-protocol-line {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--team-muted);
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .team-connector-horizontal {
     display: none;

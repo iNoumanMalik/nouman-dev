@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import { teamHierarchy, type TeamMember } from "../data/team";
 import "./Team.css";
@@ -337,6 +337,9 @@ const DepartmentSection = ({
 /* ─── Main Team Page ─── */
 function Team() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const dnaHelixRef = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
 
   const paths = useMemo(() => collectPaths(teamHierarchy), []);
 
@@ -349,6 +352,37 @@ function Team() {
     },
     [hoveredId, paths]
   );
+
+  // DNA Helix 3D rotation effect
+  useEffect(() => {
+    const element = dnaHelixRef.current;
+    if (!element) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = element.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const deltaX = (e.clientX - centerX) / (rect.width / 2);
+      const deltaY = (e.clientY - centerY) / (rect.height / 2);
+
+      setRotateY(deltaX * 2); // Max 2 degrees rotation Y
+      setRotateX(-deltaY * 2); // Max 2 degrees rotation X
+    };
+
+    const handleMouseLeave = () => {
+      setRotateX(0);
+      setRotateY(0);
+    };
+
+    element.addEventListener('mousemove', handleMouseMove);
+    element.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      element.removeEventListener('mousemove', handleMouseMove);
+      element.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   const departments = teamHierarchy.children || [];
 
@@ -377,7 +411,7 @@ function Team() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-24 md:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-8 md:pb-12">
         {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -392,9 +426,9 @@ function Team() {
             <span className="team-accent">the Code</span>
           </h1>
           <p className="team-sub font-mono text-xs md:text-sm tracking-wide">
-            A collective of engineers, designers, and thinkers
+            We're here to turn your ideas into products 
             <br className="hidden sm:block" />
-            building the future, one commit at a time.
+            that create value for your customers.
           </p>
         </motion.div>
 
@@ -504,6 +538,88 @@ function Team() {
           {/* Bottom fade */}
           <div className="h-32 w-full bg-gradient-to-t from-[var(--team-bg)] to-transparent pointer-events-none" />
         </motion.div>
+
+        {/* Engineering Protocols Section */}
+        <div className="team-principles">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="team-protocols-eyebrow">// team principles</p>
+            <h2 className="team-protocols-heading">
+              Engineering <span className="team-accent">Protocols</span>
+            </h2>
+            
+            <div className="team-loading-bar">
+              <span className="team-loading-text">Loading Company Core...</span>
+              <div className="team-loading-bar-container">
+                <div className="team-loading-bar-fill" />
+              </div>
+              <span className="team-loading-percent">[██████████████] 100%</span>
+            </div>
+
+            <div className="team-protocols-container">
+              {[
+                {
+                  id: "01",
+                  lines: [
+                    "Solve the problem first.",
+                    "Code is only one possible solution."
+                  ]
+                },
+                {
+                  id: "02",
+                  lines: [
+                    "Automate repetitive work,",
+                    "so humans focus on creativity."
+                  ]
+                },
+                {
+                  id: "03",
+                  lines: [
+                    "Build systems that developers",
+                    "will enjoy maintaining years later."
+                  ]
+                },
+                {
+                  id: "04",
+                  lines: [
+                    "Every interaction should make",
+                    "someone's day a little easier."
+                  ]
+                },
+                {
+                  id: "05",
+                  lines: [
+                    "AI amplifies great engineers.",
+                    "It never replaces thoughtful design."
+                  ]
+                }
+              ].map((protocol, index) => (
+                <motion.div
+                  key={protocol.id}
+                  className="team-protocol-card"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="team-protocol-header">
+                    <span className="team-checkmark">✓</span>
+                    <span className="team-protocol-title">Protocol {protocol.id} Initialized</span>
+                  </div>
+                  <div className="team-protocol-body">
+                    {protocol.lines.map((line, i) => (
+                      <p key={i} className="team-protocol-line">{line}</p>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
